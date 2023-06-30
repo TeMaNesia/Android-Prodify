@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">@color/blue30</color>
+    <color name="colorPrimary">@color/blue100</color>
+    <color name="colorPrimaryVariant">@color/blueVariant</color>
+    <color name="colorSecondaryDark">@color/green30</color>
+    <color name="colorSecondary">@color/green100</color>
+    <color name="colorSecondaryVariant">@color/greenVariant</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="red30">#FEC7C4</color>
+    <color name="red100">#FD443A</color>
+
+    <color name="green30">#C5EEE4</color>
+    <color name="green100">#6EC6B1</color>
+    <color name="greenVariant">#FF018786</color>
+
+    <color name="blue30">#D1F0FF</color>
+    <color name="blue100">#00ABFE</color>
+    <color name="blueVariant">#0087FE</color>
+
+    <color name="orange30">#FDEECF</color>
+    <color name="orange100">#FDBB2E</color>
+
+    <color name="dark">#302E2F</color>
+    <color name="dark_gray">#AAAAAA</color>
+    <color name="light_gray">#F8F8F8</color>
+
+    <color name="off_white">#F4F5F0</color>
+</resources>

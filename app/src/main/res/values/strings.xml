@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">TeMaNesia</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_discuss">Discuss</string>
+    <string name="title_discover">Discover</string>
+
+    <string name="title_email">Email</string>
+    <string name="title_password">Kata sandi</string>
+    <string name="title_konfirmasi_password">Konfirmasi Kata Sandi</string>
+
+    <string name="title_nim_nisn">NIM / NISN</string>
+    <string name="title_kampus_sekolah">Kampus / Sekolah</string>
+    <string name="title_nama_lengkap">Nama Lengkap</string>
+    <string name="title_nik">NIK</string>
+    <string name="title_alamat_lengkap">Alamat Lengkap</string>
+
+
+    <string name="text_welcome">Selamat Datang 👋</string>
+    <string name="text_welcome_description">Silahkan masuk menggunakan akun anda \nuntuk menggunakan Aplikasi.</string>
+    <string name="text_welcome_register">Buat Akun Baru 🔥</string>
+    <string name="text_welcome_register_description">Silahkan ini form dibawah ini dengan lengkap dan sesuaikan \ndengan data Anda.</string>
+
+
+    <string name="text_sudah_mendaftar">Sudah punya akun?</string>
+    <string name="text_belum_mendaftar">Belum punya akun?</string>
+
+    <string name="text_masuk_disini">Masuk Disini</string>
+    <string name="text_daftar_disini">Daftar Disini</string>
+    <string name="btn_text">Button</string>
+    <string name="title_kode_password">Kode Konfirmasi\n</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_notification">Notification</string>
+    <string name="search">Cari Apapun Disini</string>
+    <string name="iv_hero">Hero Image Home</string>
+</resources>
