@@ -2,6 +2,6 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <size
-        android:width="0dp"
+        android:width="@dimen/vertical_text_to_component"
         android:height="@dimen/vertical_text_to_text" />
 </shape>

@@ -43,4 +43,10 @@
     <string name="upvote_desc">Button Upvote</string>
     <string name="downVote_desc">Downvote Button</string>
     <string name="text_count_upvote">4.2k</string>
+    <string name="title_lomba">Lomba</string>
+    <string name="title_sertifikat">Sertifikat</string>
+    <string name="title_beasiswa">Beasiswa</string>
+    <string name="title_lowongan">Lowongan</string>
+    <string name="title_penyelenggara">Penyelenggara</string>
+    <string name="title_description">Deskripsi</string>
 </resources>
