@@ -12,9 +12,6 @@ import com.inovego.temanesia.ui.discover.DiscoverViewModel
 class DiscussFragment : Fragment() {
 
     private var _binding: FragmentDiscussBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

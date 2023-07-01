@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "348340047680",
+    "project_id": "temanesia-6feb4",
+    "storage_bucket": "temanesia-6feb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348340047680:android:bd40288172aea3c55374a5",
+        "android_client_info": {
+          "package_name": "com.inovego.temanesia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348340047680-mvfqusellbhanu6t4vndp9asbieja9be.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.inovego.temanesia",
+            "certificate_hash": "cf01ca989e077884fce8f89005ec875dc54bcb22"
+          }
+        },
+        {
+          "client_id": "348340047680-264eir5uel28ee6957ajhtm3skochuj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGamWsnlmZ4wKnxsnQEwo-ndulY5czlMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348340047680-264eir5uel28ee6957ajhtm3skochuj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
