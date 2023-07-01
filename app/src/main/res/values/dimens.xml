@@ -11,4 +11,9 @@
     <dimen name="font_size_small">8sp</dimen>
     <dimen name="font_size_big">18sp</dimen>
     <dimen name="font_size_medium">14sp</dimen>
+    
+    <dimen name="radius_rectangle">10%</dimen>
+    <dimen name="radius_circular">50%</dimen>
+    
+    <dimen name="radius_small">5dp</dimen>
 </resources>

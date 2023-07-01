@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:background="@drawable/component_search__bg"
+        android:background="@drawable/component_search_bg"
         android:layoutDirection="rtl"
         android:textCursorDrawable="@null"
         app:iconifiedByDefault="false"

@@ -34,4 +34,10 @@
     <string name="title_notification">Notification</string>
     <string name="search">Cari Apapun Disini</string>
     <string name="iv_hero">Hero Image Home</string>
+    <string name="text_features">Feature</string>
+    <string name="text_lembaga">Lembaga</string>
+    <string name="title_feature">National CAD-CAM Competition 2022</string>
+    <string name="title_feature_description">Kompetisi CAD-CAM guna meningkatkan keterampilan Mahasiswa Tingkat Nasional</string>
+    <string name="title_tanggal">10 November 2023</string>
+    <string name="text_features_image">features image</string>
 </resources>
