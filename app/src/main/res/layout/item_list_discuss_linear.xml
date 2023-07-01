@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardCornerRadius="@dimen/radius_small"
+    app:cardPreventCornerOverlap="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/component_card_blue_border">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_features"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/raw_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+        <TextView
+            android:id="@+id/nama_lengkap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/title_nama_lengkap"
+            android:textSize="@dimen/font_size_normal"
+            app:layout_constraintStart_toEndOf="@+id/iv_features"
+            app:layout_constraintTop_toTopOf="@+id/iv_features" />
+
+        <TextView
+            android:id="@+id/last_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/title_nama_lengkap"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/font_size_small"
+            app:layout_constraintStart_toEndOf="@+id/iv_features"
+            app:layout_constraintTop_toBottomOf="@+id/nama_lengkap" />
+
+        <TextView
+            android:id="@+id/tv_pill_features"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/component_pill_blue_bg"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/text_features"
+            android:textColor="@color/blue100"
+            android:textSize="@dimen/font_size_small"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_features" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/component_pill_blue_bg"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/text_lembaga"
+            android:textColor="@color/blue100"
+            android:textSize="@dimen/font_size_small"
+            app:layout_constraintStart_toEndOf="@+id/tv_pill_features"
+            app:layout_constraintTop_toTopOf="@+id/tv_pill_features" />
+
+        <TextView
+            android:id="@+id/tv_features_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/title_feature"
+            android:textSize="@dimen/font_size_medium"
+            app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pill_features" />
+
+        <TextView
+            android:id="@+id/tv_features_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/title_feature_description"
+            android:textSize="@dimen/font_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
+            app:layout_constraintTop_toBottomOf="@+id/tv_features_title" />
+
+        <ImageView
+            android:id="@+id/iv_feature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/text_features_image"
+            android:src="@drawable/ic_calender"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_features"
+            app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
+            app:layout_constraintTop_toBottomOf="@+id/tv_features_description" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/title_tanggal"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/font_size_small"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_feature"
+            app:layout_constraintStart_toEndOf="@+id/iv_feature"
+            app:layout_constraintTop_toTopOf="@+id/iv_feature" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/iv_features"
+            app:layout_constraintTop_toBottomOf="@+id/tv_features_description">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/upvote_desc"
+                android:src="@drawable/ic_upvote" />
+
+            <TextView
+                android:id="@+id/text_upvote_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/text_count_upvote"
+                android:textColor="@color/blue100"
+                android:textSize="@dimen/font_size_normal" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/downVote_desc"
+                android:src="@drawable/ic_down_vote" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/downVote_desc"
+                    android:src="@drawable/ic_discuss" />
+
+                <TextView
+                    android:id="@+id/text_comment_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/text_count_upvote"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/font_size_normal" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

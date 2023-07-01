@@ -40,4 +40,7 @@
     <string name="title_feature_description">Kompetisi CAD-CAM guna meningkatkan keterampilan Mahasiswa Tingkat Nasional</string>
     <string name="title_tanggal">10 November 2023</string>
     <string name="text_features_image">features image</string>
+    <string name="upvote_desc">Button Upvote</string>
+    <string name="downVote_desc">Downvote Button</string>
+    <string name="text_count_upvote">4.2k</string>
 </resources>

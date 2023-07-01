@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/text_welcome_register_description"
-        android:textSize="@dimen/font_size_regular" />
+        android:textSize="@dimen/font_size_normal" />
 
 
     <include
