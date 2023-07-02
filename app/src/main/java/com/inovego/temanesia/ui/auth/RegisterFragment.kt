@@ -1,7 +1,6 @@
 package com.inovego.temanesia.ui.auth
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.inovego.temanesia.R
+import com.inovego.temanesia.cat
+import com.inovego.temanesia.catLogAuth
 import com.inovego.temanesia.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -58,12 +59,12 @@ class RegisterFragment : Fragment() {
 
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Log.d("testing", "${it.result}")
+                    catLogAuth(it)
                     findNavController().navigate(R.id.action_navigation_register_to_navigation_login)
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        it.exception.toString(),
+                        it.exception?.message.toString(),
                         Toast.LENGTH_SHORT
                     ).show()
                 }

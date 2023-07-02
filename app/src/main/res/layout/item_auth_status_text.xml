@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/vertical_text_to_text"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/text_sudah_mendaftar"
-        android:textSize="@dimen/font_size_small" />
+        android:text="@string/text_sudah_mendaftar"/>
 
     <TextView
         android:id="@+id/login_register_text"
@@ -22,6 +21,5 @@
         android:focusable="true"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/text_daftar_disini"
-        android:textColor="@color/blue100"
-        android:textSize="@dimen/font_size_small" />
+        android:textColor="@color/blue100" />
 </LinearLayout>

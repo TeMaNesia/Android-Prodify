@@ -27,7 +27,9 @@
 
     <string name="text_masuk_disini">Masuk Disini</string>
     <string name="text_daftar_disini">Daftar Disini</string>
-    <string name="btn_text">Button</string>
+
+    <string name="btn_text_login">Login</string>
+    <string name="btn_text_Register">Register</string>
     <string name="title_kode_password">Kode Konfirmasi\n</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
