@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/action_bar_custom"
-        layout="@layout/action_bar_custom" />
+        layout="@layout/action_bar_custom_profile" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

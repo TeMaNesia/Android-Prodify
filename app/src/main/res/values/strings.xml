@@ -51,4 +51,6 @@
     <string name="title_lowongan">Lowongan</string>
     <string name="title_penyelenggara">Penyelenggara</string>
     <string name="title_description">Deskripsi</string>
+    <string name="desc_edit_profile">Button Edit Profile</string>
+    <string name="desc_profile_settings">Setting Profile</string>
 </resources>

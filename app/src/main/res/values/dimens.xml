@@ -7,6 +7,10 @@
     <dimen name="vertical_text_to_component">38dp</dimen>
     <dimen name="vertical_component_to_text">16dp</dimen>
 
+    <dimen name="profile_bg_height">96dp</dimen>
+    <dimen name="profile_pill_size">28dp</dimen>
+    <dimen name="profile_picture_size">64dp</dimen>
+
     <dimen name="font_size_normal">10sp</dimen>
     <dimen name="font_size_small">8sp</dimen>
     <dimen name="font_size_big">18sp</dimen>
