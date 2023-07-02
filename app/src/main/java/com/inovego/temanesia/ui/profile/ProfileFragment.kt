@@ -12,26 +12,22 @@ import com.inovego.temanesia.R
 import com.inovego.temanesia.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
-
     private var _binding: FragmentProfileBinding? = null
-    private lateinit var firebaseAuth: FirebaseAuth
+    private val firebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
+    private val profileViewModel by lazy {
+        ViewModelProvider(this)[ProfileViewModel::class.java]
+    }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        firebaseAuth = FirebaseAuth.getInstance()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         profileViewModel.text.observe(viewLifecycleOwner) {
             binding.actionBarCustom.tvNamaLengkap.text = it
