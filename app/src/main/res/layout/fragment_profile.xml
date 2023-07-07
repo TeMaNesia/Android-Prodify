@@ -1,18 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.profile.ProfileFragment">
 
-    <include
-        android:id="@+id/action_bar_custom"
-        layout="@layout/action_bar_custom_profile" />
-
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_list_profile_history"
-        app:layout_constraintTop_toBottomOf="@id/action_bar_custom" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/action_bar_custom"
+            layout="@layout/action_bar_custom_profile" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_margin">
+
+            <TextView
+                android:id="@+id/title_tentang_saya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/title_tentang_saya"
+                android:textSize="@dimen/font_size_medium"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/description_tentang_saya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/lorem"
+                android:textSize="@dimen/font_size_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_tentang_saya" />
+
+
+            <TextView
+                android:id="@+id/title_pengalaman_kerja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/big_gap"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/title_pengalaman_kerja"
+                android:textSize="@dimen/font_size_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/description_tentang_saya" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_pengalaman_kerja"
+                android:layout_width="@dimen/profile_pill_size"
+                android:layout_height="@dimen/profile_pill_size"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue30"
+                app:layout_constraintBottom_toBottomOf="@id/title_pengalaman_kerja"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_pengalaman_kerja">
+
+                <ImageView
+                    android:id="@+id/ic_plus_pengalaman_kerja"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/content_dest_pengalaman_kerja"
+                    android:src="@drawable/ic_plus_add" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_pengalaman_kerja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/cv_pengalaman_kerja"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_list_profile_history" />
+
+            <TextView
+                android:id="@+id/title_pendidikan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/title_pendidikan"
+                android:textSize="@dimen/font_size_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_pengalaman_kerja" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_pendidikan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/cv_pendidikan"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_list_profile_history" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_pendidikan"
+                android:layout_width="@dimen/profile_pill_size"
+                android:layout_height="@dimen/profile_pill_size"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue30"
+                app:layout_constraintBottom_toBottomOf="@id/title_pendidikan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_pendidikan">
+
+                <ImageView
+                    android:id="@+id/ic_plus_pendidikan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/content_dest_pengalaman_kerja"
+                    android:src="@drawable/ic_plus_add" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/title_sertifikat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/title_sertifikat"
+                android:textSize="@dimen/font_size_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_pendidikan" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_sertifikat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/cv_sertifikat"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_list_profile_history" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_sertifikat"
+                android:layout_width="@dimen/profile_pill_size"
+                android:layout_height="@dimen/profile_pill_size"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue30"
+                app:layout_constraintBottom_toBottomOf="@id/title_sertifikat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_sertifikat">
+
+                <ImageView
+                    android:id="@+id/ic_plus_sertifikat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/content_dest_pengalaman_kerja"
+                    android:src="@drawable/ic_plus_add" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/title_organisasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/title_organisasi"
+                android:textSize="@dimen/font_size_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_sertifikat" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_organisasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/cv_organisasi"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_list_profile_history" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_organisasi"
+                android:layout_width="@dimen/profile_pill_size"
+                android:layout_height="@dimen/profile_pill_size"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue30"
+                app:layout_constraintBottom_toBottomOf="@id/title_organisasi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_organisasi">
+
+                <ImageView
+                    android:id="@+id/ic_plus_organisasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/content_dest_pengalaman_kerja"
+                    android:src="@drawable/ic_plus_add" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/btn_buat_curriculum_vite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                android:layout_marginEnd="@dimen/small_gap"
+                android:text="@string/btn_buat_cv"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toStartOf="@id/btn_buat_cover_letter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_organisasi" />
+
+            <Button
+                android:id="@+id/btn_buat_cover_letter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_gap"
+                android:text="@string/btn_buat_cover_letter"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_buat_curriculum_vite"
+                app:layout_constraintTop_toTopOf="@id/btn_buat_curriculum_vite" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>

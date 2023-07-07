@@ -1,158 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_txtField"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/email_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_email"
+        android:visibility="gone"
         app:startIconContentDescription="@string/title_email"
         app:startIconDrawable="@drawable/ic_email">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_textField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_txtField"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/password_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_password"
-        app:endIconMode="password_toggle"
+        android:visibility="gone"
         app:startIconContentDescription="@string/title_password"
         app:startIconDrawable="@drawable/ic_password">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_txtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/konfirmasi_password_txtField"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/konfirmasi_password_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_konfirmasi_password"
+        android:visibility="gone"
         app:endIconMode="password_toggle"
         app:startIconContentDescription="@string/title_password"
         app:startIconDrawable="@drawable/ic_password">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/konfirmasi_password_txtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nim_nisn_txtField"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/nim_nisn_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_nim_nisn"
+        android:visibility="gone"
         app:startIconContentDescription="@string/title_nim_nisn"
         app:startIconDrawable="@drawable/ic_profile">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nim_nisn_txtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/kampus_sekolah_txtField"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/sekolah_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_kampus_sekolah"
+        android:visibility="gone"
         app:startIconContentDescription="@string/title_kampus_sekolah"
         app:startIconDrawable="@drawable/ic_sekolah">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/kampus_sekolah_txtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nama_lengkap_textField"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/jurusan_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
+        android:hint="@string/title_kampus_sekolah"
+        android:visibility="gone"
+        app:startIconContentDescription="@string/title_kampus_sekolah"
+        app:startIconDrawable="@drawable/ic_sekolah">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/jurusan_txtField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
+
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/nama_textField_container"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_nama_lengkap"
+        android:visibility="gone"
         app:startIconContentDescription="@string/title_nama_lengkap"
         app:startIconDrawable="@drawable/ic_profile">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nama_lengkap_textField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nik_textField"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/nik_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_nik"
+        android:visibility="gone"
         app:startIconContentDescription="@string/title_nik"
         app:startIconDrawable="@drawable/ic_nik">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nik_textField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/alamat_textField"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/alamat_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_alamat_lengkap"
+        android:visibility="gone"
         app:startIconContentDescription="@string/title_alamat_lengkap"
         app:startIconDrawable="@drawable/ic_alamat">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/alamat_textField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minLines="3" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/kode_password"
+    <com.inovego.temanesia.customView.CustomTextInputContainer
+        android:id="@+id/kode_password_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_kode_password"
+        android:visibility="gone"
         app:startIconContentDescription="@string/title_password"
         app:startIconDrawable="@drawable/ic_password">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/kode_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-</merge>
+    </com.inovego.temanesia.customView.CustomTextInputContainer>
+</LinearLayout>

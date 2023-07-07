@@ -7,5 +7,5 @@
 
     <include
         android:id="@+id/register"
-        layout="@layout/fragment_login" />
+        layout="@layout/layout_auth" />
 </FrameLayout>

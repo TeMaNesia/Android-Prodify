@@ -1,44 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_margin="@dimen/activity_vertical_margin"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:paddingTop="?actionBarSize"
     tools:context=".ui.auth.LoginFragment">
 
-    <TextView
-        android:id="@+id/auth_welcome_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/text_welcome_register"
-        android:textSize="@dimen/font_size_big" />
-
-    <TextView
-        android:id="@+id/auth_welcome_description_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/text_welcome_register_description"
-        android:textSize="@dimen/font_size_normal" />
-
     <include
-        android:id="@+id/auth_text_field_list"
-        layout="@layout/item_test" />
-
-
-    <Button
-        android:id="@+id/auth_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_text_login"
-        android:textAllCaps="false" />
-
-    <include
-        android:id="@+id/auth_status_text"
-        layout="@layout/item_auth_status_text" />
-</LinearLayout>
+        android:id="@+id/login"
+        layout="@layout/layout_auth" />
+</FrameLayout>

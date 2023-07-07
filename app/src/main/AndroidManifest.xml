@@ -17,10 +17,10 @@
             android:name=".ui.discuss.CreateDiscussActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.detail.discuss.DetailDiscussActivity"
+            android:name=".ui.detail.DetailDiscussActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.detail.feature.DetailFeatureActivity"
+            android:name=".ui.detail.DetailFeatureActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.AuthActivity"

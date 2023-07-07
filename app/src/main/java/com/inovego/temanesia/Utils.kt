@@ -1,20 +1,31 @@
 package com.inovego.temanesia
 
 import android.util.Log
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
+import android.util.Patterns
+import android.view.View
+import com.google.android.material.textfield.TextInputLayout
 
 inline fun <reified T> T.cat(message: Any?) =
     Log.i("CatLog ${T::class.java.simpleName}", message.toString())
 
-fun catLogAuth(it: Task<AuthResult>){
-    it.cat("Success ${it.isSuccessful}")
-    it.cat("Complete ${it.isComplete}")
-    it.cat("Canceled ${ it.isCanceled }")
+fun TextInputLayout.showError(errorText: String? = "Lengkapi Input") {
+    this.isErrorEnabled = true
+    this.error = errorText
+}
 
-    it.cat("Result ${ it.result.user }")
-    it.cat("Result ${ it.result.additionalUserInfo }")
-    it.cat("Result ${ it.result.credential }")
+fun TextInputLayout.hideError() {
+    this.isErrorEnabled = false
+    this.error = null
+}
 
-    it.cat(it.exception?.message)
+fun TextInputLayout.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun TextInputLayout.gone() {
+    this.visibility = View.GONE
+}
+
+fun String.isEmailValid(): Boolean {
+    return Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }

@@ -8,7 +8,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_email"
         app:startIconContentDescription="@string/title_email"
         app:startIconDrawable="@drawable/ic_email">
@@ -24,7 +24,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_password"
         app:endIconMode="password_toggle"
         app:startIconContentDescription="@string/title_password"

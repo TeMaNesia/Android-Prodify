@@ -1,14 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/activity_vertical_margin"
+    android:layout_margin="@dimen/activity_margin"
     android:gravity="center"
-    android:orientation="vertical"
-    android:paddingTop="?actionBarSize"
-    tools:context=".ui.auth.LoginFragment">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/auth_welcome_text"
@@ -27,7 +23,9 @@
         android:textSize="@dimen/font_size_normal" />
 
 
-    <include layout="@layout/item_test" />
+    <include
+        android:id="@+id/auth_text_field_list"
+        layout="@layout/items_text_field" />
 
     <Button
         android:id="@+id/auth_button"

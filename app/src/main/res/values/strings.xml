@@ -17,7 +17,7 @@
 
 
     <string name="text_welcome">Selamat Datang 👋</string>
-    <string name="text_welcome_description">Silahkan masuk menggunakan akun anda \nuntuk menggunakan Aplikasi.</string>
+    <string name="text_welcome_description">Silahkan masuk menggunakan akun anda untuk \nmenggunakan Aplikasi.</string>
     <string name="text_welcome_register">Buat Akun Baru 🔥</string>
     <string name="text_welcome_register_description">Silahkan ini form dibawah ini dengan lengkap dan sesuaikan \ndengan data Anda.</string>
 
@@ -53,4 +53,13 @@
     <string name="title_description">Deskripsi</string>
     <string name="desc_edit_profile">Button Edit Profile</string>
     <string name="desc_profile_settings">Setting Profile</string>
+    <string name="title_tentang_saya">Tentang Saya</string>
+
+    <string name="lorem">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris.</string>
+    <string name="title_pengalaman_kerja">Pengalaman Kerja</string>
+    <string name="content_dest_pengalaman_kerja">Button Plus Pengalaman Kerja</string>
+    <string name="title_pendidikan">Pendidikan</string>
+    <string name="btn_buat_cv">Buat CV</string>
+    <string name="btn_buat_cover_letter">Buat Cover Letter</string>
+    <string name="title_organisasi">Organisasi</string>
 </resources>

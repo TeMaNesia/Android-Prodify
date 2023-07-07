@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detail.discuss.DetailDiscussActivity">
+    tools:context=".ui.detail.DetailDiscussActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/discuss_parent"
