@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:layout_marginBottom="@dimen/medium_gap"
     app:cardCornerRadius="@dimen/radius_small"
     app:cardPreventCornerOverlap="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/component_card_blue_border">
+        android:background="@drawable/component_card_blue_border"
+        android:padding="@dimen/medium_gap">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_features"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="75dp"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/mask_group"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +29,7 @@
             android:id="@+id/tv_pill_features"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_gap"
             android:background="@drawable/component_pill_blue_bg"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/text_features"
@@ -36,8 +40,10 @@
             app:layout_constraintTop_toTopOf="@+id/iv_features" />
 
         <TextView
+            android:id="@+id/tv_pill_lembaga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_gap"
             android:background="@drawable/component_pill_gray_bg"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/text_lembaga"
@@ -49,6 +55,7 @@
             android:id="@+id/tv_features_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_gap"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/title_feature"
             android:textSize="@dimen/font_size_medium"
@@ -57,33 +64,34 @@
 
         <TextView
             android:id="@+id/tv_features_description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/title_feature_description"
             android:textSize="@dimen/font_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
             app:layout_constraintTop_toBottomOf="@+id/tv_features_title" />
 
         <ImageView
-            android:id="@+id/iv_feature"
-            android:contentDescription="@string/text_features_image"
+            android:id="@+id/ic_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/text_features_image"
             android:src="@drawable/ic_calender"
             app:layout_constraintBottom_toBottomOf="@+id/iv_features"
-            app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
-            app:layout_constraintTop_toBottomOf="@+id/tv_features_description" />
+            app:layout_constraintStart_toStartOf="@+id/tv_pill_features" />
 
         <TextView
+            android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/title_tanggal"
             android:textColor="@color/dark_gray"
             android:textSize="@dimen/font_size_small"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_feature"
-            app:layout_constraintStart_toEndOf="@+id/iv_feature"
-            app:layout_constraintTop_toTopOf="@+id/iv_feature" />
+            app:layout_constraintBottom_toBottomOf="@+id/ic_date"
+            app:layout_constraintStart_toEndOf="@+id/ic_date"
+            app:layout_constraintTop_toTopOf="@+id/ic_date" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

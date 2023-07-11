@@ -62,4 +62,6 @@
     <string name="btn_buat_cv">Buat CV</string>
     <string name="btn_buat_cover_letter">Buat Cover Letter</string>
     <string name="title_organisasi">Organisasi</string>
+    <string name="title_rekomendasi_beasiswa">Rekomendasi Beasiswa</string>
+    <string name="iv_desc_goto_beasiswa">Goto Beasiswa</string>
 </resources>

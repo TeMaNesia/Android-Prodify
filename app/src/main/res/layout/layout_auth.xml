@@ -23,9 +23,11 @@
         android:textSize="@dimen/font_size_normal" />
 
 
-    <include
-        android:id="@+id/auth_text_field_list"
-        layout="@layout/items_text_field" />
+    <com.inovego.temanesia.ui.auth.view.AuthTextInputLinearLayout
+        android:id="@+id/auth_textInput_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 
     <Button
         android:id="@+id/auth_button"
@@ -33,6 +35,13 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_text_login"
         android:textAllCaps="false" />
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_test"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="test"-->
+<!--        android:textAllCaps="false" />-->
 
     <include
         android:id="@+id/auth_status_text"

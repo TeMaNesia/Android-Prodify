@@ -1,11 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/email_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -19,11 +15,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_textField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textWebEmailAddress" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/password_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -31,6 +28,8 @@
         android:layout_marginBottom="@dimen/activity_margin"
         android:hint="@string/title_password"
         android:visibility="gone"
+        app:endIconMode="password_toggle"
+
         app:startIconContentDescription="@string/title_password"
         app:startIconDrawable="@drawable/ic_password">
 
@@ -38,11 +37,11 @@
             android:id="@+id/password_txtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textWebPassword" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/konfirmasi_password_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -58,12 +57,12 @@
             android:id="@+id/konfirmasi_password_txtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textWebPassword" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/nim_nisn_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -77,11 +76,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nim_nisn_txtField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="number" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/sekolah_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -97,9 +97,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/jurusan_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -115,9 +115,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/nama_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -133,9 +133,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/nik_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -149,11 +149,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nik_textField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="number" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 
-    <com.inovego.temanesia.customView.CustomTextInputContainer
+    <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/alamat_textField_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -170,23 +171,5 @@
             android:layout_height="wrap_content"
             android:minLines="3" />
 
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
-
-    <com.inovego.temanesia.customView.CustomTextInputContainer
-        android:id="@+id/kode_password_textField_container"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_margin"
-        android:hint="@string/title_kode_password"
-        android:visibility="gone"
-        app:startIconContentDescription="@string/title_password"
-        app:startIconDrawable="@drawable/ic_password">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/kode_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.inovego.temanesia.customView.CustomTextInputContainer>
-</LinearLayout>
+    </com.inovego.temanesia.ui.auth.view.AuthTextInput>
+</merge>
