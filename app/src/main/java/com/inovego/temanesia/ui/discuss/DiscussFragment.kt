@@ -1,5 +1,6 @@
 package com.inovego.temanesia.ui.discuss
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,12 @@ class DiscussFragment : Fragment() {
         discussViewModel.text.observe(viewLifecycleOwner) {
             binding.actionBarCustom.tvUsername.text = it
         }
+
+        binding.btnCreateDiskus.setOnClickListener {
+            val intent = Intent(activity, CreateDiscussActivity::class.java)
+            activity?.startActivity(intent)
+        }
+
 
         return binding.root
     }

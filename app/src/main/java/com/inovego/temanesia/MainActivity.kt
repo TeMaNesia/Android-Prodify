@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        supportActionBar?.hide()
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navBottomView.setupWithNavController(navController)
     }
 }

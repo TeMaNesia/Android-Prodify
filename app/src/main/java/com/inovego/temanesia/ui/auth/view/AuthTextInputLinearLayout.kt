@@ -191,11 +191,11 @@ class AuthTextInputLinearLayout : LinearLayout {
             }
 
             binding.passwordTextFieldContainer.id -> {
-                val isPasswordValid = binding.passwordTxtField.text!!.length >= 8
+                val isPasswordValid = binding.passwordTxtField.text!!.length >= 6
                 val isPasswordTheSame =
                     binding.passwordTxtField.text.toString() == binding.konfirmasiPasswordTxtField.text.toString()
 
-                if (!isPasswordValid) errorLayout.enableErrorAndSetMessage("Password Minimal 8 karakter")
+                if (!isPasswordValid) errorLayout.enableErrorAndSetMessage("Password Minimal 6 karakter")
                 else {
                     errorLayout.disableError()
                     errorLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:elevation="0dp"
+    app:cardElevation="0dp"
+    android:layout_marginBottom="12dp"
     app:cardCornerRadius="@dimen/radius_small"
     app:cardPreventCornerOverlap="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/component_card_blue_border">
+        android:padding="12dp"
+        android:background="@drawable/component_card_dark_grey_border">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_features"
+            android:id="@+id/img_avatar"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/raw_profile"
@@ -26,102 +30,119 @@
             android:id="@+id/nama_lengkap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_semibold"
             android:text="@string/title_nama_lengkap"
-            android:textSize="@dimen/font_size_normal"
-            app:layout_constraintStart_toEndOf="@+id/iv_features"
-            app:layout_constraintTop_toTopOf="@+id/iv_features" />
+            android:textSize="@dimen/font_size_medium"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
+            app:layout_constraintTop_toTopOf="@+id/img_avatar" />
 
         <TextView
-            android:id="@+id/last_comment"
+            android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/title_nama_lengkap"
+            android:text="4h"
             android:textColor="@color/dark_gray"
-            android:textSize="@dimen/font_size_small"
-            app:layout_constraintStart_toEndOf="@+id/iv_features"
+            android:textSize="@dimen/font_size_normal"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
             app:layout_constraintTop_toBottomOf="@+id/nama_lengkap" />
 
-        <TextView
-            android:id="@+id/tv_pill_features"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/component_pill_blue_bg"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/text_features"
-            android:textColor="@color/blue100"
-            android:textSize="@dimen/font_size_small"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_features" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/component_pill_blue_bg"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/text_lembaga"
-            android:textColor="@color/blue100"
-            android:textSize="@dimen/font_size_small"
-            app:layout_constraintStart_toEndOf="@+id/tv_pill_features"
-            app:layout_constraintTop_toTopOf="@+id/tv_pill_features" />
-
-        <TextView
-            android:id="@+id/tv_features_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/title_feature"
-            android:textSize="@dimen/font_size_medium"
-            app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pill_features" />
-
-        <TextView
-            android:id="@+id/tv_features_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/title_feature_description"
-            android:textSize="@dimen/font_size_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
-            app:layout_constraintTop_toBottomOf="@+id/tv_features_title" />
-
-        <ImageView
-            android:id="@+id/ic_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/text_features_image"
-            android:src="@drawable/ic_calender"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_features"
-            app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
-            app:layout_constraintTop_toBottomOf="@+id/tv_features_description" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/title_tanggal"
-            android:textColor="@color/dark_gray"
-            android:textSize="@dimen/font_size_small"
-            app:layout_constraintBottom_toBottomOf="@+id/ic_date"
-            app:layout_constraintStart_toEndOf="@+id/ic_date"
-            app:layout_constraintTop_toTopOf="@+id/ic_date" />
-
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/tags_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/iv_features"
-            app:layout_constraintTop_toBottomOf="@+id/tv_features_description">
+            app:layout_constraintTop_toBottomOf="@+id/img_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <ImageView
+            <TextView
+                android:id="@+id/tv_tag_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/component_pill_blue_bg"
+                android:fontFamily="@font/poppins_medium"
+                android:text="#Tag1"
+                android:textColor="@color/blue100"
+                android:textSize="@dimen/font_size_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
+
+            <TextView
+                android:id="@+id/tv_tag_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/component_pill_blue_bg"
+                android:fontFamily="@font/poppins_medium"
+                android:text="#Tag2"
+                android:textColor="@color/blue100"
+                android:textSize="@dimen/font_size_normal"
+                app:layout_constraintStart_toEndOf="@id/tv_tag_1"
+                app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
+
+            <TextView
+                android:id="@+id/tv_tag_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/component_pill_blue_bg"
+                android:fontFamily="@font/poppins_medium"
+                android:text="#Tag3"
+                android:textColor="@color/blue100"
+                android:textSize="@dimen/font_size_normal"
+                app:layout_constraintStart_toEndOf="@id/tv_tag_2"
+                app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/lorem_ipsum_12_words"
+            android:textSize="@dimen/font_size_medium"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="@+id/tags_container"
+            app:layout_constraintTop_toBottomOf="@+id/tags_container" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/dark_gray"
+            android:text="@string/lorem_ipsum_32_words"
+            android:textSize="@dimen/font_size_normal"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description">
+
+            <ImageView
+                android:id="@+id/btn_upvote"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/upvote_desc"
                 android:src="@drawable/ic_upvote" />
 
@@ -129,27 +150,31 @@
                 android:id="@+id/text_upvote_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/poppins_bold"
+                android:layout_marginStart="4dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/text_count_upvote"
                 android:textColor="@color/blue100"
-                android:textSize="@dimen/font_size_normal" />
+                android:textSize="@dimen/font_size_medium" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/btn_downvote"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/downVote_desc"
                 android:src="@drawable/ic_down_vote" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="end"
-                tools:ignore="UseCompoundDrawables">
+                android:gravity="end">
 
                 <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
                     android:layout_gravity="end"
                     android:contentDescription="@string/downVote_desc"
                     android:src="@drawable/ic_discuss" />
@@ -159,11 +184,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/text_count_upvote"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="503"
                     android:textColor="@color/dark_gray"
-                    android:textSize="@dimen/font_size_normal" />
+                    android:textSize="@dimen/font_size_medium" />
             </LinearLayout>
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
