@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.inovego.temanesia.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_detailFeatureActivity"
+            app:destination="@id/navigation_detailFeatureActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_beasiswaActivity"
+            app:destination="@id/navigation_beasiswaActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_discover"
@@ -30,11 +37,25 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_navigation_profile_to_authActivity"
-            app:destination="@id/authActivity" />
+            app:destination="@id/navigation_authActivity" />
     </fragment>
     <activity
-        android:id="@+id/authActivity"
+        android:id="@+id/navigation_authActivity"
         android:name="com.inovego.temanesia.ui.auth.AuthActivity"
         android:label="activity_auth"
         tools:layout="@layout/activity_auth" />
+    <activity
+        android:id="@+id/navigation_detailFeatureActivity"
+        android:name="com.inovego.temanesia.ui.detail.DetailFeatureActivity"
+        android:label="DetailFeatureActivity"
+        tools:layout="@layout/activity_detail_feature">
+        <argument
+            android:name="FeatureItem"
+            app:argType="com.inovego.temanesia.data.model.BeasiswaItem" />
+    </activity>
+    <activity
+        android:id="@+id/navigation_beasiswaActivity"
+        android:name="com.inovego.temanesia.ui.home.beasiswa.BeasiswaActivity"
+        android:label="activity_beasiswa"
+        tools:layout="@layout/activity_beasiswa" />
 </navigation>

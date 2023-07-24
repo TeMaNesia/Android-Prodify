@@ -10,12 +10,7 @@ import com.inovego.temanesia.data.model.BeasiswaItem
 import com.inovego.temanesia.databinding.ItemListFeatureLinearBinding
 import com.inovego.temanesia.utils.loadImageFromUrl
 
-
-//interface onCLick {
-//    val onCLickItemBeasiswa: BeasiswaItem
-//}
-
-class HomeAdapter :
+class HomeAdapter(private val onClick: (BeasiswaItem) -> Unit) :
     ListAdapter<BeasiswaItem, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -38,8 +33,11 @@ class HomeAdapter :
                 tvPillFeatures.text = item.jenisKegiatan
                 tvPillLembaga.text = item.penyelenggara
                 tvFeaturesTitle.text = item.nama
-                tvFeaturesDescription.text = item.deskripsi
+                tvFeaturesDescriptionSingkat.text = item.ringkasan
                 tvDate.text = item.date.toString()
+            }
+            binding.root.setOnClickListener {
+                onClick(item)
             }
         }
     }

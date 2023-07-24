@@ -1,5 +1,7 @@
 package com.inovego.temanesia.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.util.Date
 
 data class UserItem(
@@ -21,6 +23,7 @@ data class ProfileDummy(
     val date: Date,
 )
 
+@Parcelize
 data class BeasiswaItem(
     val jenisKegiatan: String,
     val status: String,
@@ -32,9 +35,15 @@ data class BeasiswaItem(
     val penyelenggaraUID: String,
     val penyelenggaraEmail: String,
     val url: String,
-    val urlPedoman: String?,
     val urlPoster: String,
     var createdAt: Date,
     var date: Date,
-)
+    val listDokumen: List<Dokumen>?,
+) : Parcelable
+
+@Parcelize
+data class Dokumen(
+    val namaFile: String,
+    val urlFile: String,
+) : Parcelable
 

@@ -79,7 +79,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_pill_features" />
 
         <TextView
-            android:id="@+id/tv_features_description"
+            android:id="@+id/tv_features_description_singkat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
@@ -97,7 +97,7 @@
             android:src="@drawable/ic_calender"
             app:layout_constraintBottom_toBottomOf="@+id/iv_features"
             app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
-            app:layout_constraintTop_toBottomOf="@+id/tv_features_description" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_features_description_singkat" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/iv_features"
-            app:layout_constraintTop_toBottomOf="@+id/tv_features_description">
+            app:layout_constraintTop_toBottomOf="@+id/tv_features_description_singkat">
 
             <ImageView
                 android:layout_width="wrap_content"

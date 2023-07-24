@@ -69,9 +69,14 @@ class LoginFragment : Fragment() {
 
     private fun signInFirebase(email: String, password: String) {
         viewModel.signInFirebase(email, password)
-        viewModel.isSignedIn.observe(viewLifecycleOwner) {
-            if (it) findNavController().navigate(R.id.action_navigation_login_to_mainActivity)
+        viewModel.isSignedIn.observe(viewLifecycleOwner) { isSignIn ->
+            if (isSignIn == true) {
+                if (viewModel.checkEmail()) {
+                    findNavController().navigate(R.id.action_navigation_login_to_mainActivity)
+                }
+            }
         }
+
     }
 
     override fun onDestroyView() {

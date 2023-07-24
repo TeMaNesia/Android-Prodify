@@ -27,6 +27,9 @@ class AuthViewModel(
     private val _isSignedIn = MutableLiveData(false)
     val isSignedIn: LiveData<Boolean> = _isSignedIn
 
+    private val _isEmailVerified = MutableLiveData(false)
+    val isEmailVerified: LiveData<Boolean> = _isEmailVerified
+
     private val _isUserDataSaved = MutableLiveData(false)
     val isUserDataSaved: LiveData<Boolean> = _isUserDataSaved
 
@@ -37,6 +40,9 @@ class AuthViewModel(
         _section.value = state
     }
 
+    fun setSnackbarText(text: String) {
+        _toastText.value = Event(text)
+    }
 
     fun signupFirebase(
         email: String,
@@ -45,8 +51,8 @@ class AuthViewModel(
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             _isRegistered.value = it.isSuccessful
             if (it.isSuccessful) _toastText.value = Event("Berhasil Membuat Akun")
-            else _toastText.value = Event("Gagal Membuat Akun")
-        }
+            else _toastText.value = Event("Gagal : ${it.exception?.message}")
+        }.addOnFailureListener { e -> Event("Gagal SignUp : $e") }
     }
 
     fun signInFirebase(
@@ -54,11 +60,23 @@ class AuthViewModel(
         password: String,
     ) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-            if (it.isSuccessful) {
-                _toastText.value = Event("Berhasil Masuk Ke Akun")
-                _isSignedIn.value = true
-            }
-        }.addOnFailureListener { e -> _toastText.value = Event(e.message.toString()) }
+            _isSignedIn.value = it.isSuccessful
+        }.addOnFailureListener { e ->
+            _toastText.value = Event("${e.message}")
+        }
+    }
+
+    fun checkEmail(): Boolean {
+        return if (firebaseAuth.currentUser == null) {
+            false
+        } else if (firebaseAuth.currentUser?.isEmailVerified == null) {
+            _toastText.value = Event("Harap Verifikasi Email Anda")
+            firebaseAuth.signOut()
+            false
+        } else {
+            _toastText.value = Event("Berhasil Masuk Akun")
+            true
+        }
     }
 
     fun writeDataOnDB(uid: String, userData: UserItem) {
@@ -95,7 +113,7 @@ class AuthViewModel(
                 _toastText.value = Event("Gagal Mengirim Email Verifikasi")
             }
         }?.addOnFailureListener { e ->
-            _toastText.value = Event("Gagal Mengirim Email Verifikasi : $e")
+            _toastText.value = Event("Gagal : $e")
         }
     }
 }

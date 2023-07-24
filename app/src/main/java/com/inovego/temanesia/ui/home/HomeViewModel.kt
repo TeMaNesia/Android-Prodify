@@ -7,7 +7,9 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.inovego.temanesia.data.model.BeasiswaItem
+import com.inovego.temanesia.data.model.Dokumen
 import com.inovego.temanesia.utils.FIREBASE_BEASISWA
+import com.inovego.temanesia.utils.FIREBASE_DOKUMEN
 import com.inovego.temanesia.utils.cat
 
 class HomeViewModel(
@@ -20,6 +22,7 @@ class HomeViewModel(
     }
     val text: LiveData<String> = _text
 
+    private val _dokumen = MutableLiveData<List<Dokumen>?>()
     private val _listBeasiswa = MutableLiveData<List<BeasiswaItem>?>()
     val listBeasiswa: LiveData<List<BeasiswaItem>?> = _listBeasiswa
 
@@ -34,7 +37,20 @@ class HomeViewModel(
                 val listData = doc?.map { data ->
                     val createdAt = data["created_at"] as Timestamp
                     val date = data["date"] as Timestamp
-                    BeasiswaItem(
+
+                    data.reference.collection(FIREBASE_DOKUMEN)
+                        .get()
+                        .addOnSuccessListener { dokumen ->
+                            val listDokumen = dokumen.map { data ->
+                                Dokumen(
+                                    namaFile = data["nama_file"].toString(),
+                                    urlFile = data["url"].toString()
+                                )
+                            }
+                            _dokumen.value = listDokumen
+                        }
+
+                    return@map BeasiswaItem(
                         jenisKegiatan = data["jenis_kegiatan"] as String,
                         status = data["status"] as String,
                         nama = data["nama"] as String,
@@ -45,10 +61,10 @@ class HomeViewModel(
                         penyelenggaraUID = data["penyelenggara_uid"] as String,
                         penyelenggaraEmail = data["email_penyelenggara"] as String,
                         url = data["url"] as String,
-                        urlPedoman = data["pedoman"] as String?,
                         urlPoster = data["poster"] as String,
                         createdAt = createdAt.toDate(),
                         date = date.toDate(),
+                        listDokumen = _dokumen.value
                     )
                 }
                 _listBeasiswa.value = listData
