@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.inovego.temanesia.R
 import com.inovego.temanesia.databinding.FragmentHomeBinding
 import com.inovego.temanesia.helper.ViewModelFactory
+import com.inovego.temanesia.ui.adapter.HomeAdapter
 
 class HomeFragment : Fragment() {
     private lateinit var adapter: HomeAdapter
@@ -22,6 +26,7 @@ class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by activityViewModels {
         ViewModelFactory.getInstance(Firebase.auth, Firebase.firestore)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,8 +38,13 @@ class HomeFragment : Fragment() {
             binding.actionBarCustom.tvUsername.text = it
         }
 
-        adapter = HomeAdapter()
-        homeViewModel.listBeasiswa.observe(viewLifecycleOwner) {
+        adapter = HomeAdapter { item ->
+            findNavController().navigate(
+                R.id.action_navigation_home_to_navigation_detailFeatureActivity,
+                bundleOf("FeatureItem" to item)
+            )
+        }
+        homeViewModel.listData.observe(viewLifecycleOwner) {
             it?.let { data -> adapter.submitList(data) }
         }
         return binding.root
@@ -46,6 +56,21 @@ class HomeFragment : Fragment() {
         binding.rvBeasiswa.apply {
             adapter = this@HomeFragment.adapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        }
+
+        binding.cardFeatures.apply {
+            cardBeasiswa.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_beasiswaActivity)
+            }
+            cardLowongan.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_lowonganActivity)
+            }
+            cardLomba.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_lombaActivity)
+            }
+            cardSertifikat.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_sertifikatActivity)
+            }
         }
     }
 

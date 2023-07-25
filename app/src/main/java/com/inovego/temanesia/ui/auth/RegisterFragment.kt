@@ -76,34 +76,36 @@ class RegisterFragment : Fragment() {
                 EMAIL_PASSWORD_CONFIRM_PASSWORD -> {
                     textInputLayout.checkTextInputAndError(section, false)
                     button.setOnClickListener {
-                        if (inputTextState(section)) viewModel.setSection(CONFIRM_ACCOUNT)
+                        val email = textInputLayout.getView().emailTextField.text.toString()
+                        val password = textInputLayout.getView().passwordTxtField.text.toString()
+
+                        if (inputTextState(section)) {
+                            viewModel.signupFirebase(email, password)
+
+                            viewModel.isRegistered.observe(viewLifecycleOwner) { registered ->
+                                if (registered) viewModel.signInFirebase(email, password)
+                            }
+
+                            viewModel.isSignedIn.observe(viewLifecycleOwner) { signedIn ->
+                                if (signedIn) {
+                                    viewModel.sendEmailVerification()
+
+                                    val userItemData = setUserData(textInputLayout)
+                                    sendDataToDB(userItemData)
+                                }
+                            }
+
+                            viewModel.isUserDataSaved.observe(viewLifecycleOwner) { dataSaved ->
+                                if (dataSaved) viewModel.setSection(CONFIRM_ACCOUNT)
+                            }
+                        }
                     }
                 }
 
                 CONFIRM_ACCOUNT -> {
                     textInputLayout.checkTextInputAndError(section, false)
                     button.setOnClickListener {
-                        val email = textInputLayout.getView().emailTextField.text.toString()
-                        val password = textInputLayout.getView().passwordTxtField.text.toString()
-
-                        if (inputTextState(section)) viewModel.signupFirebase(email, password)
-
-                        viewModel.isRegistered.observe(viewLifecycleOwner) { registered ->
-                            if (registered) viewModel.signInFirebase(email, password)
-                        }
-
-                        viewModel.isSignedIn.observe(viewLifecycleOwner) { signedIn ->
-                            if (signedIn) {
-                                viewModel.sendEmailVerification()
-
-                                val userItemData = setUserData(textInputLayout)
-                                sendDataToDB(userItemData)
-                            }
-                        }
-
-                        viewModel.isUserDataSaved.observe(viewLifecycleOwner) { dataSaved ->
-                            if (dataSaved) findNavController().navigate(R.id.action_navigation_register_to_navigation_login)
-                        }
+                        findNavController().navigate(R.id.action_navigation_register_to_navigation_login)
                     }
                 }
             }

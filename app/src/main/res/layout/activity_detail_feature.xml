@@ -1,204 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.detail.DetailFeatureActivity">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/text_features"
-        android:minHeight="400dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/mask_group" />
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".ui.detail.DetailFeatureActivity">
 
-        <TextView
-            android:id="@+id/tv_pill_features"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/iv_poster"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/component_pill_blue_bg"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/text_features"
-            android:textColor="@color/blue100"
-            android:textSize="@dimen/font_size_small"
+            android:contentDescription="@string/text_features"
+            android:minHeight="400dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mask_group" />
 
-            app:layout_constraintStart_toEndOf="@+id/iv_features"
-            app:layout_constraintTop_toTopOf="@+id/iv_features" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/component_pill_gray_bg"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/text_lembaga"
-            android:textSize="@dimen/font_size_small"
-            app:layout_constraintStart_toEndOf="@+id/tv_pill_features"
-            app:layout_constraintTop_toTopOf="@+id/tv_pill_features" />
+            android:layout_margin="@dimen/activity_margin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/medium_gap">
+
+                <TextView
+                    android:id="@+id/tv_pill_features"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/component_pill_blue_bg"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/text_features"
+                    android:textColor="@color/blue100"
+                    android:textSize="@dimen/font_size_small"
+
+                    app:layout_constraintStart_toEndOf="@+id/iv_features"
+                    app:layout_constraintTop_toTopOf="@+id/iv_features" />
+
+                <TextView
+                    android:id="@+id/tv_pill_lembaga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/component_pill_gray_bg"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/text_lembaga"
+                    android:textSize="@dimen/font_size_small"
+                    app:layout_constraintStart_toEndOf="@+id/tv_pill_features"
+                    app:layout_constraintTop_toTopOf="@+id/tv_pill_features" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_features_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/small_gap"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/title_feature"
+                android:textColor="@color/blue100"
+                android:textSize="@dimen/font_size_big" />
+
+            <TextView
+                android:id="@+id/tv_features_description_singkat"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/small_gap"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/title_feature_description"
+                android:textSize="@dimen/font_size_medium" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/big_gap">
+
+                <ImageView
+                    android:id="@+id/ic_alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/title_alamat_lengkap"
+                    android:src="@drawable/ic_alamat_v2" />
+
+                <TextView
+                    android:id="@+id/tv_alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ic_alamat"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/title_alamat_lengkap"
+                    android:textSize="@dimen/font_size_small" />
+
+                <ImageView
+                    android:id="@+id/ic_tanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ic_alamat"
+                    android:contentDescription="@string/title_alamat_lengkap"
+                    android:src="@drawable/ic_calender" />
+
+                <TextView
+                    android:id="@+id/tv_tanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_alamat"
+                    android:layout_toEndOf="@id/ic_tanggal"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/title_tanggal"
+                    android:textSize="@dimen/font_size_small" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/medium_gap"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/title_penyelenggara"
+                android:textSize="@dimen/font_size_medium" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/big_gap">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_penyelanggara"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/raw_profile"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+                <TextView
+                    android:id="@+id/tv_penyelenggara_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/title_penyelenggara"
+                    app:layout_constraintBottom_toTopOf="@id/tv_penyelenggara_email"
+                    app:layout_constraintStart_toEndOf="@+id/iv_penyelanggara"
+                    app:layout_constraintTop_toTopOf="@+id/iv_penyelanggara" />
+
+                <TextView
+                    android:id="@+id/tv_penyelenggara_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/title_penyelenggara"
+                    android:textSize="@dimen/font_size_small"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_penyelanggara"
+                    app:layout_constraintStart_toStartOf="@+id/tv_penyelenggara_title"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_penyelenggara_title" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/title_description"
+                android:textSize="@dimen/font_size_medium" />
+
+            <TextView
+                android:id="@+id/tv_features_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/big_gap"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/title_feature_description"
+                android:textSize="@dimen/font_size_small" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_dokumen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/big_gap"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_list_dokumen" />
+
+            <Button
+                android:id="@+id/auth_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_text_login"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/title_feature"
-        android:textColor="@color/blue100"
-        android:textSize="@dimen/font_size_big" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/title_feature_description"
-        android:textSize="@dimen/font_size_medium" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/ic_alamat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/title_alamat_lengkap"
-            android:src="@drawable/ic_alamat_v2" />
-
-        <TextView
-            android:id="@+id/tv_alamat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/ic_alamat"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/title_alamat_lengkap"
-            android:textSize="@dimen/font_size_small" />
-
-        <ImageView
-            android:id="@+id/ic_tanggal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ic_alamat"
-            android:contentDescription="@string/title_alamat_lengkap"
-            android:src="@drawable/ic_calender" />
-
-        <TextView
-            android:id="@+id/tv_tanggal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_alamat"
-            android:layout_toEndOf="@id/ic_tanggal"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/title_tanggal"
-            android:textSize="@dimen/font_size_small" />
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/title_penyelenggara"
-        android:textSize="@dimen/font_size_medium" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_penyelanggara"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/raw_profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/title_penyelenggara"
-            app:layout_constraintBottom_toTopOf="@id/tv_title_penyelenggara_description"
-            app:layout_constraintStart_toEndOf="@+id/iv_penyelanggara"
-            app:layout_constraintTop_toTopOf="@+id/iv_penyelanggara" />
-
-        <TextView
-            android:id="@+id/tv_title_penyelenggara_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/title_penyelenggara"
-            android:textSize="@dimen/font_size_small"
-
-            app:layout_constraintBottom_toBottomOf="@+id/iv_penyelanggara"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/title_description"
-        android:textSize="@dimen/font_size_medium" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/title_feature_description"
-        android:textSize="@dimen/font_size_small" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:background="@drawable/component_card_blue_border"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_dokumen_penting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/raw_profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
-
-        <TextView
-            android:id="@+id/tv_dokument_penting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/title_penyelenggara"
-            app:layout_constraintBottom_toTopOf="@id/tv_dokument_penting_description"
-            app:layout_constraintStart_toEndOf="@+id/iv_dokumen_penting"
-            app:layout_constraintTop_toTopOf="@+id/iv_dokumen_penting" />
-
-        <TextView
-            android:id="@+id/tv_dokument_penting_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/title_penyelenggara"
-            android:textSize="@dimen/font_size_small"
-
-            app:layout_constraintBottom_toBottomOf="@+id/iv_dokumen_penting"
-            app:layout_constraintStart_toStartOf="@+id/tv_dokument_penting"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dokument_penting" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/auth_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_text_login"
-        android:textAllCaps="false" />
-
-
-</LinearLayout>
+</ScrollView>

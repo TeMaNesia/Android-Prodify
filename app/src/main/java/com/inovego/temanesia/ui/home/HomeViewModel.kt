@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.inovego.temanesia.data.model.BeasiswaItem
-import com.inovego.temanesia.utils.FIREBASE_BEASISWA
+import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.inovego.temanesia.data.model.Dokumen
+import com.inovego.temanesia.data.model.ListItem
+import com.inovego.temanesia.utils.FIREBASE_DOKUMEN
 import com.inovego.temanesia.utils.cat
 
 class HomeViewModel(
@@ -20,40 +22,75 @@ class HomeViewModel(
     }
     val text: LiveData<String> = _text
 
-    private val _listBeasiswa = MutableLiveData<List<BeasiswaItem>?>()
-    val listBeasiswa: LiveData<List<BeasiswaItem>?> = _listBeasiswa
+    private val listItem = mutableListOf<ListItem>()
+    private val _listItem = MutableLiveData<List<ListItem>?>()
+    val listData: LiveData<List<ListItem>?> = _listItem
 
     init {
-        getListDataBeasiswa()
+//        getListDataBeasiswa(FIREBASE_DOKUMEN)
+//        getListDataBeasiswa(FIREBASE_BEASISWA)
+//        getListDataBeasiswa(FIREBASE_SERTIFIKASI)
+//        getListDataBeasiswa(FIREBASE_LOWONGAN)
     }
 
-    private fun getListDataBeasiswa() {
-        firebaseFirestore.collection(FIREBASE_BEASISWA)
+    fun getListData(collectionName: String) {
+        firebaseFirestore.collection(collectionName)
             .get()
             .addOnSuccessListener { doc ->
-                val listData = doc?.map { data ->
+                val totalData = doc.size()
+                var processedData = 0
+                doc.forEach { data ->
                     val createdAt = data["created_at"] as Timestamp
                     val date = data["date"] as Timestamp
-                    BeasiswaItem(
-                        jenisKegiatan = data["jenis_kegiatan"] as String,
-                        status = data["status"] as String,
-                        nama = data["nama"] as String,
-                        deskripsi = data["deskripsi"] as String,
-                        ringkasan = data["ringkasan"] as String,
-                        lokasi = data["lokasi"] as String,
-                        penyelenggara = data["nama_penyelenggara"] as String,
-                        penyelenggaraUID = data["penyelenggara_uid"] as String,
-                        penyelenggaraEmail = data["email_penyelenggara"] as String,
-                        url = data["url"] as String,
-                        urlPedoman = data["pedoman"] as String?,
-                        urlPoster = data["poster"] as String,
-                        createdAt = createdAt.toDate(),
-                        date = date.toDate(),
-                    )
+                    val listDokumen = mutableListOf<Dokumen>()
+
+                    data.reference.collection(FIREBASE_DOKUMEN)
+                        .get()
+                        .addOnSuccessListener { dokumen ->
+                            listDokumen.addAll(
+                                dokumen.map { data ->
+                                    Dokumen(
+                                        namaFile = data["nama_file"].toString(),
+                                        urlFile = data["url"].toString()
+                                    )
+                                }
+                            )
+                            listItem.add(setBeasiswaItem(data, createdAt, date, listDokumen))
+                        }.addOnFailureListener {
+                            listItem.add(setBeasiswaItem(data, createdAt, date, listDokumen))
+                        }.addOnCompleteListener {
+                            processedData += 1
+                            if (processedData == totalData){
+                                _listItem.value = listItem
+                            }
+                        }
                 }
-                _listBeasiswa.value = listData
             }
 
             .addOnFailureListener { e -> cat("failure : $e") }
+    }
+
+    private fun setBeasiswaItem(
+        data: QueryDocumentSnapshot,
+        createdAt: Timestamp,
+        date: Timestamp,
+        listDokumen: List<Dokumen>,
+    ): ListItem {
+        return ListItem(
+            jenisKegiatan = data["jenis_kegiatan"] as String,
+            status = data["status"] as String,
+            nama = data["nama"] as String,
+            deskripsi = data["deskripsi"] as String,
+            ringkasan = data["ringkasan"] as String,
+            lokasi = data["lokasi"] as String,
+            penyelenggara = data["nama_penyelenggara"] as String,
+            penyelenggaraUID = data["penyelenggara_uid"] as String,
+            penyelenggaraEmail = data["email_penyelenggara"] as String,
+            url = data["url"] as String,
+            urlPoster = data["poster"] as String,
+            createdAt = createdAt.toDate(),
+            date = date.toDate(),
+            listDokumen = listDokumen
+        )
     }
 }

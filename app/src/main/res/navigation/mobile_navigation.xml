@@ -9,7 +9,23 @@
         android:id="@+id/navigation_home"
         android:name="com.inovego.temanesia.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_detailFeatureActivity"
+            app:destination="@id/navigation_detailFeatureActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_beasiswaActivity"
+            app:destination="@id/navigation_beasiswaActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_lowonganActivity"
+            app:destination="@id/navigation_lowonganActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_sertifikatActivity"
+            app:destination="@id/navigation_sertifikatActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_lombaActivity"
+            app:destination="@id/navigation_lombaActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_discover"
@@ -30,11 +46,37 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_navigation_profile_to_authActivity"
-            app:destination="@id/authActivity" />
+            app:destination="@id/navigation_authActivity" />
     </fragment>
     <activity
-        android:id="@+id/authActivity"
+        android:id="@+id/navigation_authActivity"
         android:name="com.inovego.temanesia.ui.auth.AuthActivity"
         android:label="activity_auth"
         tools:layout="@layout/activity_auth" />
+    <activity
+        android:id="@+id/navigation_detailFeatureActivity"
+        android:name="com.inovego.temanesia.ui.detail.DetailFeatureActivity"
+        android:label="DetailFeatureActivity"
+        tools:layout="@layout/activity_detail_feature">
+    </activity>
+    <activity
+        android:id="@+id/navigation_beasiswaActivity"
+        android:name="com.inovego.temanesia.ui.home.beasiswa.BeasiswaActivity"
+        android:label="activity_beasiswa"
+        tools:layout="@layout/activity_beasiswa" />
+    <activity
+        android:id="@+id/navigation_lowonganActivity"
+        android:name="com.inovego.temanesia.ui.home.lowongan.LowonganActivity"
+        android:label="activity_lowongan"
+        tools:layout="@layout/activity_lowongan" />
+    <activity
+        android:id="@+id/navigation_sertifikatActivity"
+        android:name="com.inovego.temanesia.ui.home.sertifikat.SertifikatActivity"
+        android:label="activity_sertifikat"
+        tools:layout="@layout/activity_sertifikat" />
+    <activity
+        android:id="@+id/navigation_lombaActivity"
+        android:name="com.inovego.temanesia.ui.home.lomba.LombaActivity"
+        android:label="LombaActivity"
+        tools:layout="@layout/activity_lomba"/>
 </navigation>

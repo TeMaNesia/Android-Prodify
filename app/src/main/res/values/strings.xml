@@ -66,4 +66,5 @@
     <string name="lorem_ipsum_32_words">etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet id donec ultrices tincidunt arcu non sodales neque sodales ut</string>
     <string name="title_rekomendasi_beasiswa">Rekomendasi Beasiswa</string>
     <string name="iv_desc_goto_beasiswa">Goto Beasiswa</string>
+    <string name="deskripsi_dokumen">Buku Pedoman Kompetisi Mahasiswa Bidang Informatika Politeknik Nasional</string>
 </resources>

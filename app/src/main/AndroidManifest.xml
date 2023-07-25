@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,6 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeMaNesia"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.home.sertifikat.SertifikatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.lowongan.LowonganActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.lomba.LombaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.beasiswa.BeasiswaActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.discuss.CreateDiscussActivity"
             android:exported="false" />
