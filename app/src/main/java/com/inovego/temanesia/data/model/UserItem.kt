@@ -24,7 +24,7 @@ data class ProfileDummy(
 )
 
 @Parcelize
-data class BeasiswaItem(
+data class ListItem(
     val jenisKegiatan: String,
     val status: String,
     val nama: String,

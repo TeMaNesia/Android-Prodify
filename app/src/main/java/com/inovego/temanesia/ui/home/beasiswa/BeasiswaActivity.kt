@@ -10,9 +10,11 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.inovego.temanesia.databinding.ActivityBeasiswaBinding
 import com.inovego.temanesia.helper.ViewModelFactory
+import com.inovego.temanesia.ui.adapter.HomeAdapter
 import com.inovego.temanesia.ui.detail.DetailFeatureActivity
-import com.inovego.temanesia.ui.home.HomeAdapter
 import com.inovego.temanesia.ui.home.HomeViewModel
+import com.inovego.temanesia.utils.FIREBASE_BEASISWA
+import com.inovego.temanesia.utils.PARCELABLE_DATA
 
 class BeasiswaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBeasiswaBinding
@@ -29,12 +31,13 @@ class BeasiswaActivity : AppCompatActivity() {
 
         adapter = HomeAdapter { item ->
             Intent(this, DetailFeatureActivity::class.java).also {
-                it.putExtra("FeatureItem", item)
+                it.putExtra(PARCELABLE_DATA, item)
                 startActivity(it)
             }
         }
 
-        homeViewModel.listBeasiswa.observe(this) {
+        homeViewModel.getListData(FIREBASE_BEASISWA)
+        homeViewModel.listData.observe(this) {
             it?.let { data -> adapter.submitList(data) }
         }
 

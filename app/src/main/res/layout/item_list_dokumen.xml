@@ -3,22 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/medium_gap"
     android:background="@drawable/component_card_blue_border">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_dokumen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/raw_profile"
+        android:src="@drawable/ic_pdf_placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_dokumen_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_gap"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/title_penyelenggara"
         app:layout_constraintBottom_toTopOf="@id/tv_dokumen_description"
@@ -30,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/title_penyelenggara"
+        android:text="@string/deskripsi_dokumen"
         android:textSize="@dimen/font_size_small"
 
         app:layout_constraintBottom_toBottomOf="@+id/iv_dokumen"

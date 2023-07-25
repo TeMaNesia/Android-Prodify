@@ -1,4 +1,4 @@
-package com.inovego.temanesia.ui.home
+package com.inovego.temanesia.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.inovego.temanesia.data.model.BeasiswaItem
+import com.inovego.temanesia.data.model.ListItem
 import com.inovego.temanesia.databinding.ItemListFeatureLinearBinding
 import com.inovego.temanesia.utils.loadImageFromUrl
 
-class HomeAdapter(private val onClick: (BeasiswaItem) -> Unit) :
-    ListAdapter<BeasiswaItem, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class HomeAdapter(private val onClick: (ListItem) -> Unit) :
+    ListAdapter<ListItem, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,37 +27,37 @@ class HomeAdapter(private val onClick: (BeasiswaItem) -> Unit) :
     inner class MyViewHolder(val binding: ItemListFeatureLinearBinding) : RecyclerView.ViewHolder(
         binding.root
     ) {
-        fun bind(item: BeasiswaItem) {
+        fun bind(listItem: ListItem) {
             binding.apply {
-                ivFeatures.loadImageFromUrl(item.urlPoster)
-                tvPillFeatures.text = item.jenisKegiatan
-                tvPillLembaga.text = item.penyelenggara
-                tvFeaturesTitle.text = item.nama
-                tvFeaturesDescriptionSingkat.text = item.ringkasan
-                tvDate.text = item.date.toString()
+                ivFeatures.loadImageFromUrl(listItem.urlPoster)
+                tvPillFeatures.text = listItem.jenisKegiatan
+                tvPillLembaga.text = listItem.penyelenggara
+                tvFeaturesTitle.text = listItem.nama
+                tvFeaturesDescriptionSingkat.text = listItem.ringkasan
+                tvDate.text = listItem.date.toString()
             }
             binding.root.setOnClickListener {
-                onClick(item)
+                onClick(listItem)
             }
         }
     }
 
     companion object {
-        val DIFF_CALLBACK: DiffUtil.ItemCallback<BeasiswaItem> =
-            object : DiffUtil.ItemCallback<BeasiswaItem>() {
+        val DIFF_CALLBACK: DiffUtil.ItemCallback<ListItem> =
+            object : DiffUtil.ItemCallback<ListItem>() {
                 override fun areItemsTheSame(
-                    oldItem: BeasiswaItem,
-                    newItem: BeasiswaItem,
+                    oldListItem: ListItem,
+                    newListItem: ListItem,
                 ): Boolean {
-                    return oldItem.deskripsi == newItem.deskripsi
+                    return oldListItem.deskripsi == newListItem.deskripsi
                 }
 
                 @SuppressLint("DiffUtilEquals")
                 override fun areContentsTheSame(
-                    oldItem: BeasiswaItem,
-                    newItem: BeasiswaItem,
+                    oldListItem: ListItem,
+                    newListItem: ListItem,
                 ): Boolean {
-                    return oldItem == newItem
+                    return oldListItem == newListItem
                 }
             }
     }

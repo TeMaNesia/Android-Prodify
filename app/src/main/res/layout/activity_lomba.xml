@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.lomba.LombaActivity">
+    android:orientation="vertical"
+    tools:context=".ui.home.beasiswa.BeasiswaActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/component_search_bg"
+        android:layoutDirection="rtl"
+        android:textCursorDrawable="@null"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="@id/iv_bell"
+        app:layout_constraintStart_toStartOf="@id/iv_avatar"
+        app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+        app:queryBackground="@null"
+        app:queryHint="@string/search"
+        app:searchIcon="@drawable/ic_search"
+        app:showDividers="end" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_lomba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_list_feature_linear"
+        />
+</LinearLayout>

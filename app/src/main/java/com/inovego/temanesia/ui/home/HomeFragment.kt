@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.inovego.temanesia.R
 import com.inovego.temanesia.databinding.FragmentHomeBinding
 import com.inovego.temanesia.helper.ViewModelFactory
+import com.inovego.temanesia.ui.adapter.HomeAdapter
 
 class HomeFragment : Fragment() {
     private lateinit var adapter: HomeAdapter
@@ -43,7 +44,7 @@ class HomeFragment : Fragment() {
                 bundleOf("FeatureItem" to item)
             )
         }
-        homeViewModel.listBeasiswa.observe(viewLifecycleOwner) {
+        homeViewModel.listData.observe(viewLifecycleOwner) {
             it?.let { data -> adapter.submitList(data) }
         }
         return binding.root
@@ -62,13 +63,13 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_navigation_home_to_navigation_beasiswaActivity)
             }
             cardLowongan.setOnClickListener {
-                findNavController().navigate(R.id.action_navigation_home_to_navigation_beasiswaActivity)
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_lowonganActivity)
             }
             cardLomba.setOnClickListener {
-                findNavController().navigate(R.id.action_navigation_home_to_navigation_beasiswaActivity)
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_lombaActivity)
             }
             cardSertifikat.setOnClickListener {
-                findNavController().navigate(R.id.action_navigation_home_to_navigation_beasiswaActivity)
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_sertifikatActivity)
             }
         }
     }

@@ -16,6 +16,15 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_beasiswaActivity"
             app:destination="@id/navigation_beasiswaActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_lowonganActivity"
+            app:destination="@id/navigation_lowonganActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_sertifikatActivity"
+            app:destination="@id/navigation_sertifikatActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_lombaActivity"
+            app:destination="@id/navigation_lombaActivity" />
     </fragment>
 
     <fragment
@@ -49,13 +58,25 @@
         android:name="com.inovego.temanesia.ui.detail.DetailFeatureActivity"
         android:label="DetailFeatureActivity"
         tools:layout="@layout/activity_detail_feature">
-        <argument
-            android:name="FeatureItem"
-            app:argType="com.inovego.temanesia.data.model.BeasiswaItem" />
     </activity>
     <activity
         android:id="@+id/navigation_beasiswaActivity"
         android:name="com.inovego.temanesia.ui.home.beasiswa.BeasiswaActivity"
         android:label="activity_beasiswa"
         tools:layout="@layout/activity_beasiswa" />
+    <activity
+        android:id="@+id/navigation_lowonganActivity"
+        android:name="com.inovego.temanesia.ui.home.lowongan.LowonganActivity"
+        android:label="activity_lowongan"
+        tools:layout="@layout/activity_lowongan" />
+    <activity
+        android:id="@+id/navigation_sertifikatActivity"
+        android:name="com.inovego.temanesia.ui.home.sertifikat.SertifikatActivity"
+        android:label="activity_sertifikat"
+        tools:layout="@layout/activity_sertifikat" />
+    <activity
+        android:id="@+id/navigation_lombaActivity"
+        android:name="com.inovego.temanesia.ui.home.lomba.LombaActivity"
+        android:label="LombaActivity"
+        tools:layout="@layout/activity_lomba"/>
 </navigation>
