@@ -15,29 +15,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_username"
+    <LinearLayout
+        android:id="@+id/name_jurusan_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_margin"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/title_nama_lengkap"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_size_medium"
-        app:layout_constraintBottom_toTopOf="@id/tv_jurusan"
-        app:layout_constraintStart_toEndOf="@id/iv_avatar"
-        app:layout_constraintTop_toTopOf="@id/iv_avatar" />
-
-    <TextView
-        android:id="@+id/tv_jurusan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/title_kampus_sekolah"
-        android:textSize="@dimen/font_size_small"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar"
         app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
-        app:layout_constraintStart_toStartOf="@+id/tv_username"
-        app:layout_constraintTop_toBottomOf="@id/tv_username" />
+        app:layout_constraintStart_toEndOf="@id/iv_avatar">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/title_nama_lengkap"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_medium" />
+
+        <TextView
+            android:id="@+id/tv_jurusan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/dark_gray"
+            android:text="@string/title_kampus_sekolah"
+            android:textSize="@dimen/font_size_normal" />
+
+    </LinearLayout>
+
+
+
 
     <ImageView
         android:id="@+id/iv_bell"
@@ -66,4 +76,5 @@
         app:queryHint="@string/search"
         app:searchIcon="@drawable/ic_search"
         app:showDividers="end" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
