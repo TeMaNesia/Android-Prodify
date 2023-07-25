@@ -117,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/upvote_desc"
-                android:src="@drawable/ic_upvote" />
+                android:src="@drawable/ic_up_vote_active" />
 
             <TextView
                 android:id="@+id/text_upvote_count"

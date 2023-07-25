@@ -49,55 +49,17 @@
             app:layout_constraintStart_toEndOf="@+id/img_avatar"
             app:layout_constraintTop_toBottomOf="@+id/nama_lengkap" />
 
-        <LinearLayout
-            android:id="@+id/tags_container"
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexbox_tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:justifyContent="flex_start"
             app:layout_constraintTop_toBottomOf="@+id/img_avatar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <TextView
-                android:id="@+id/tv_tag_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/component_pill_blue_bg"
-                android:fontFamily="@font/poppins_medium"
-                android:text="#Tag1"
-                android:textColor="@color/blue100"
-                android:textSize="@dimen/font_size_normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
-
-            <TextView
-                android:id="@+id/tv_tag_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/component_pill_blue_bg"
-                android:fontFamily="@font/poppins_medium"
-                android:text="#Tag2"
-                android:textColor="@color/blue100"
-                android:textSize="@dimen/font_size_normal"
-                app:layout_constraintStart_toEndOf="@id/tv_tag_1"
-                app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
-
-            <TextView
-                android:id="@+id/tv_tag_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/component_pill_blue_bg"
-                android:fontFamily="@font/poppins_medium"
-                android:text="#Tag3"
-                android:textColor="@color/blue100"
-                android:textSize="@dimen/font_size_normal"
-                app:layout_constraintStart_toEndOf="@id/tv_tag_2"
-                app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
-
-        </LinearLayout>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -109,8 +71,8 @@
             android:textSize="@dimen/font_size_medium"
             android:maxLines="2"
             android:ellipsize="end"
-            app:layout_constraintStart_toStartOf="@+id/tags_container"
-            app:layout_constraintTop_toBottomOf="@+id/tags_container" />
+            app:layout_constraintStart_toStartOf="@+id/flexbox_tag"
+            app:layout_constraintTop_toBottomOf="@+id/flexbox_tag" />
 
         <TextView
             android:id="@+id/tv_description"
@@ -144,7 +106,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/upvote_desc"
-                android:src="@drawable/ic_upvote" />
+                android:src="@drawable/ic_up_vote" />
 
             <TextView
                 android:id="@+id/text_upvote_count"
@@ -154,7 +116,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/text_count_upvote"
-                android:textColor="@color/blue100"
+                android:textColor="@color/dark_gray"
                 android:textSize="@dimen/font_size_medium" />
 
             <ImageView

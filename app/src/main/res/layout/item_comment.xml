@@ -78,32 +78,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_comment">
 
-                <LinearLayout
-                    android:id="@+id/btn_reply"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:layout_gravity="end"
-                        android:contentDescription="@string/downVote_desc"
-                        android:src="@drawable/ic_discuss" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginStart="4dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Balas"
-                        android:textColor="@color/dark_gray"
-                        android:textSize="@dimen/font_size_medium" />
-
-                </LinearLayout>
-
                 <ImageView
                     android:id="@+id/btn_upvote"
                     android:layout_width="20dp"
@@ -111,7 +85,7 @@
                     android:layout_marginStart="14dp"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/upvote_desc"
-                    android:src="@drawable/ic_upvote" />
+                    android:src="@drawable/ic_up_vote" />
 
                 <TextView
                     android:id="@+id/text_upvote_count"
@@ -121,7 +95,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="@string/text_count_upvote"
-                    android:textColor="@color/blue100"
+                    android:textColor="@color/dark_gray"
                     android:textSize="@dimen/font_size_medium" />
 
                 <ImageView

@@ -119,8 +119,9 @@ class CreateDiscussActivity : AppCompatActivity() {
         diskus["uid"] = uid
         diskus["author_name"] = uName
         diskus["author_img_url"] = uImgUrl
-        diskus["up_vote"] = mutableListOf<String>()
-        diskus["down_vote"] = mutableListOf<String>()
+        diskus["up_vote"] = 0
+        diskus["down_vote"] = 0
+        diskus["total_comment"] = 0
 
         db.collection("diskus").add(diskus)
             .addOnSuccessListener {

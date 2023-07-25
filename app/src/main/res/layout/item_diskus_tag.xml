@@ -9,7 +9,7 @@
     android:layout_marginBottom="6dp"
     android:text="Tagging"
     android:textColor="@color/blue100"
-    android:textSize="@dimen/font_size_medium"
+    android:textSize="12sp"
     android:fontFamily="@font/poppins_medium">
 
 </TextView>

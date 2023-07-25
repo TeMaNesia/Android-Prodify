@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,34 +8,31 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <include
-            android:id="@+id/action_bar_custom"
-            layout="@layout/action_bar_custom" />
-
-        <Button
-            android:id="@+id/btn_create_diskus"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:background="@drawable/component_search_bg"
+            android:layoutDirection="rtl"
             android:layout_marginHorizontal="16dp"
-            android:background="@drawable/bg_btn_blue"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="+ Buat Diskus"
-            android:textAllCaps="false"
-            android:textSize="14sp" />
+            android:layout_marginTop="16dp"
+            android:textCursorDrawable="@null"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="@id/iv_bell"
+            app:layout_constraintStart_toStartOf="@id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+            app:queryBackground="@null"
+            app:queryHint="@string/search"
+            app:searchIcon="@drawable/ic_search"
+            app:showDividers="end" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="Diskus Trending"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_big"
-            android:fontFamily="@font/poppins_bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_trending_diskus"
@@ -44,7 +41,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="16dp"
             tools:listitem="@layout/item_list_discuss_linear"
-            tools:itemCount="3"/>
+            tools:itemCount="1"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -56,16 +53,73 @@
             android:textSize="@dimen/font_size_big"
             android:fontFamily="@font/poppins_bold"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_new_diskus"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            tools:listitem="@layout/item_list_discuss_linear"
-            tools:itemCount="10"/>
+            android:layout_marginHorizontal="16dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_new_diskus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_list_discuss_linear"
+                tools:itemCount="10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/loading_diskus_terbaru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                app:indicatorColor="@color/blue100"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </LinearLayout>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_create_diskus"
+        android:visibility="visible"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_margin="32dp"
+        android:backgroundTint="@color/blue100"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-</ScrollView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ic_shopping_bag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_plus_add"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
