@@ -56,7 +56,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_gap"
+            android:ellipsize="end"
             android:fontFamily="@font/montserrat_bold"
+            android:maxLines="1"
             android:text="@string/title_feature"
             android:textSize="@dimen/font_size_medium"
             app:layout_constraintStart_toStartOf="@+id/tv_pill_features"
@@ -66,7 +68,9 @@
             android:id="@+id/tv_features_description_singkat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
             android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
             android:text="@string/title_feature_description"
             android:textSize="@dimen/font_size_small"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,12 +79,13 @@
 
         <ImageView
             android:id="@+id/ic_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:contentDescription="@string/text_features_image"
             android:src="@drawable/ic_calender"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_features"
-            app:layout_constraintStart_toStartOf="@+id/tv_pill_features" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_features"
+            app:layout_constraintStart_toStartOf="@id/tv_pill_features"
+            app:layout_constraintTop_toBottomOf="@id/tv_features_description_singkat" />
 
         <TextView
             android:id="@+id/tv_date"

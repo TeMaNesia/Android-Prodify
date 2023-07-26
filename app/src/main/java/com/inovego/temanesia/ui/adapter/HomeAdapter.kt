@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.inovego.temanesia.data.model.ListItem
+import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.databinding.ItemListFeatureLinearBinding
 import com.inovego.temanesia.utils.loadImageFromUrl
 
-class HomeAdapter(private val onClick: (ListItem) -> Unit) :
-    ListAdapter<ListItem, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class HomeAdapter(private val onClick: (FeatureItem) -> Unit) :
+    ListAdapter<FeatureItem, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,37 +27,37 @@ class HomeAdapter(private val onClick: (ListItem) -> Unit) :
     inner class MyViewHolder(val binding: ItemListFeatureLinearBinding) : RecyclerView.ViewHolder(
         binding.root
     ) {
-        fun bind(listItem: ListItem) {
+        fun bind(FeatureItem: FeatureItem) {
             binding.apply {
-                ivFeatures.loadImageFromUrl(listItem.urlPoster)
-                tvPillFeatures.text = listItem.jenisKegiatan
-                tvPillLembaga.text = listItem.penyelenggara
-                tvFeaturesTitle.text = listItem.nama
-                tvFeaturesDescriptionSingkat.text = listItem.ringkasan
-                tvDate.text = listItem.date.toString()
+                ivFeatures.loadImageFromUrl(FeatureItem.urlPosterImg)
+                tvPillFeatures.text = FeatureItem.jenisKegiatan
+                tvPillLembaga.text = FeatureItem.penyelenggara
+                tvFeaturesTitle.text = FeatureItem.nama
+                tvFeaturesDescriptionSingkat.text = FeatureItem.ringkasan
+                tvDate.text = FeatureItem.date.toString()
             }
             binding.root.setOnClickListener {
-                onClick(listItem)
+                onClick(FeatureItem)
             }
         }
     }
 
     companion object {
-        val DIFF_CALLBACK: DiffUtil.ItemCallback<ListItem> =
-            object : DiffUtil.ItemCallback<ListItem>() {
+        val DIFF_CALLBACK: DiffUtil.ItemCallback<FeatureItem> =
+            object : DiffUtil.ItemCallback<FeatureItem>() {
                 override fun areItemsTheSame(
-                    oldListItem: ListItem,
-                    newListItem: ListItem,
+                    oldFeatureItem: FeatureItem,
+                    newFeatureItem: FeatureItem,
                 ): Boolean {
-                    return oldListItem.deskripsi == newListItem.deskripsi
+                    return oldFeatureItem.deskripsi == newFeatureItem.deskripsi
                 }
 
                 @SuppressLint("DiffUtilEquals")
                 override fun areContentsTheSame(
-                    oldListItem: ListItem,
-                    newListItem: ListItem,
+                    oldFeatureItem: FeatureItem,
+                    newFeatureItem: FeatureItem,
                 ): Boolean {
-                    return oldListItem == newListItem
+                    return oldFeatureItem == newFeatureItem
                 }
             }
     }

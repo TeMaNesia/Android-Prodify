@@ -1,21 +1,14 @@
 package com.inovego.temanesia.ui.detail
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.inovego.temanesia.data.model.ListItem
+import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.databinding.ActivityDetailFeatureBinding
-import com.inovego.temanesia.helper.ViewModelFactory
 import com.inovego.temanesia.ui.adapter.DetailAdapter
-import com.inovego.temanesia.ui.adapter.HomeAdapter
-import com.inovego.temanesia.ui.home.HomeViewModel
-import com.inovego.temanesia.utils.PARCELABLE_DATA
-import com.inovego.temanesia.utils.cat
 import com.inovego.temanesia.utils.loadImageFromUrl
 
 class DetailFeatureActivity : AppCompatActivity() {
@@ -27,27 +20,41 @@ class DetailFeatureActivity : AppCompatActivity() {
         binding = ActivityDetailFeatureBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val listItem = intent?.extras?.getParcelable("FeatureItem") as ListItem?
+        val featureItem = IntentCompat.getParcelableExtra(
+            intent,
+            FeatureItem::class.java.simpleName,
+            FeatureItem::class.java
+        )
         binding.apply {
-            if (listItem != null) {
-                adapter = DetailAdapter {}
+            if (featureItem != null) {
+                adapter = DetailAdapter {
+                    val openUrl = Intent(Intent.ACTION_VIEW)
+                    openUrl.data = Uri.parse(it.urlFile)
+                    startActivity(openUrl)
+                }
 
-                ivPoster.loadImageFromUrl(listItem.urlPoster)
-                tvPillFeatures.text = listItem.jenisKegiatan
-                tvPillLembaga.text = listItem.penyelenggara
-                tvFeaturesTitle.text = listItem.nama
-                tvFeaturesDescriptionSingkat.text = listItem.ringkasan
-                tvAlamat.text = listItem.lokasi
-                tvTanggal.text = listItem.date.toString()
+                ivPoster.loadImageFromUrl(featureItem.urlPosterImg)
+                tvPillFeatures.text = featureItem.jenisKegiatan
+                tvPillLembaga.text = featureItem.penyelenggara
+                tvFeaturesTitle.text = featureItem.nama
+                tvFeaturesDescriptionSingkat.text = featureItem.ringkasan
+                tvAlamat.text = featureItem.lokasi
+                tvTanggal.text = featureItem.date.toString()
 
-                ivPenyelanggara.loadImageFromUrl(listItem.url)
-                tvPenyelenggaraTitle.text = listItem.penyelenggara
-                tvPenyelenggaraEmail.text = listItem.penyelenggaraEmail
-                cat(listItem.listDokumen)
-                adapter.submitList(listItem.listDokumen)
-                binding.rvDokumen.apply {
+                ivPenyelanggara.loadImageFromUrl(featureItem.urlPenyelenggaraImg)
+                tvPenyelenggaraTitle.text = featureItem.penyelenggara
+                tvPenyelenggaraEmail.text = featureItem.penyelenggaraEmail
+                adapter.submitList(featureItem.listDokumen)
+                rvDokumen.apply {
                     adapter = this@DetailFeatureActivity.adapter
-                    layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    layoutManager =
+                        LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                }
+                btnDetail.text = "Daftar Sekarang"
+                btnDetail.setOnClickListener {
+                    val openUrl = Intent(Intent.ACTION_VIEW)
+                    openUrl.data = Uri.parse(featureItem.urlFeature)
+                    startActivity(openUrl)
                 }
             }
         }

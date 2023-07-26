@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.inovego.temanesia.data.model.Dokumen
-import com.inovego.temanesia.data.model.ListItem
+import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.utils.FIREBASE_DOKUMEN
 import com.inovego.temanesia.utils.cat
 
@@ -22,9 +22,9 @@ class HomeViewModel(
     }
     val text: LiveData<String> = _text
 
-    private val listItem = mutableListOf<ListItem>()
-    private val _listItem = MutableLiveData<List<ListItem>?>()
-    val listData: LiveData<List<ListItem>?> = _listItem
+    private val featureItem = mutableListOf<FeatureItem>()
+    private val _featureItem = MutableLiveData<List<FeatureItem>?>()
+    val listData: LiveData<List<FeatureItem>?> = _featureItem
 
     init {
 //        getListDataBeasiswa(FIREBASE_DOKUMEN)
@@ -55,13 +55,13 @@ class HomeViewModel(
                                     )
                                 }
                             )
-                            listItem.add(setBeasiswaItem(data, createdAt, date, listDokumen))
+                            featureItem.add(setBeasiswaItem(data, createdAt, date, listDokumen))
                         }.addOnFailureListener {
-                            listItem.add(setBeasiswaItem(data, createdAt, date, listDokumen))
+                            featureItem.add(setBeasiswaItem(data, createdAt, date, listDokumen))
                         }.addOnCompleteListener {
                             processedData += 1
                             if (processedData == totalData){
-                                _listItem.value = listItem
+                                _featureItem.value = featureItem
                             }
                         }
                 }
@@ -75,8 +75,8 @@ class HomeViewModel(
         createdAt: Timestamp,
         date: Timestamp,
         listDokumen: List<Dokumen>,
-    ): ListItem {
-        return ListItem(
+    ): FeatureItem {
+        return FeatureItem(
             jenisKegiatan = data["jenis_kegiatan"] as String,
             status = data["status"] as String,
             nama = data["nama"] as String,
@@ -86,8 +86,9 @@ class HomeViewModel(
             penyelenggara = data["nama_penyelenggara"] as String,
             penyelenggaraUID = data["penyelenggara_uid"] as String,
             penyelenggaraEmail = data["email_penyelenggara"] as String,
-            url = data["url"] as String,
-            urlPoster = data["poster"] as String,
+            urlFeature = data["url"] as String,
+            urlPosterImg = data["poster"] as String,
+            urlPenyelenggaraImg = data["foto_penyelenggara"] as String,
             createdAt = createdAt.toDate(),
             date = date.toDate(),
             listDokumen = listDokumen

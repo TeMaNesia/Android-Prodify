@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.inovego.temanesia.R
 import com.inovego.temanesia.data.model.UserItem
 import com.inovego.temanesia.databinding.FragmentRegisterBinding
@@ -40,11 +42,13 @@ class RegisterFragment : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         textInputLayout = binding.register.authTextInputLayout
         button = binding.register.authButton
+        textInputLayout.getJurusanDropdown(requireContext())
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        button.text = "Continue"
         viewModel.toastText.observe(viewLifecycleOwner) { event ->
             event.getContentIfNotHandled()?.let { text ->
                 createToast(requireContext(), text)
@@ -80,20 +84,47 @@ class RegisterFragment : Fragment() {
                         val password = textInputLayout.getView().passwordTxtField.text.toString()
 
                         if (inputTextState(section)) {
-                            viewModel.signupFirebase(email, password)
+                            Firebase.auth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful) {
+                                        createToast(requireContext(), "Berhasil Membuat Akun")
 
-                            viewModel.isRegistered.observe(viewLifecycleOwner) { registered ->
-                                if (registered) viewModel.signInFirebase(email, password)
-                            }
+                                        Firebase.auth.signInWithEmailAndPassword(email, password)
+                                            .addOnCompleteListener {
+                                                viewModel.sendEmailVerification()
 
-                            viewModel.isSignedIn.observe(viewLifecycleOwner) { signedIn ->
-                                if (signedIn) {
-                                    viewModel.sendEmailVerification()
+                                                val userItemData = setUserData(textInputLayout)
+                                                sendDataToDB(userItemData)
+                                            }.addOnFailureListener { e ->
+                                                createToast(
+                                                    requireContext(),
+                                                    "Gagal masuk akun : $e"
+                                                )
+                                            }
 
-                                    val userItemData = setUserData(textInputLayout)
-                                    sendDataToDB(userItemData)
+                                    } else createToast(
+                                        requireContext(),
+                                        "Gagal : ${it.exception?.message}"
+                                    )
+                                }.addOnFailureListener { e ->
+                                    createToast(
+                                        requireContext(),
+                                        "Gagal SignUp : $e"
+                                    )
                                 }
-                            }
+
+//                            viewModel.isRegistered.observe(viewLifecycleOwner) { registered ->
+//                                if (registered) viewModel.signInFirebase(email, password)
+//                            }
+
+//                            viewModel.isSignedIn.observe(viewLifecycleOwner) { signedIn ->
+//                                if (signedIn) {
+//                                    viewModel.sendEmailVerification()
+//
+//                                    val userItemData = setUserData(textInputLayout)
+//                                    sendDataToDB(userItemData)
+//                                }
+//                            }
 
                             viewModel.isUserDataSaved.observe(viewLifecycleOwner) { dataSaved ->
                                 if (dataSaved) viewModel.setSection(CONFIRM_ACCOUNT)
@@ -123,7 +154,7 @@ class RegisterFragment : Fragment() {
             val email = emailTextField.text.toString()
             val alamat = alamatTextField.text.toString()
             val pendidikan = kampusSekolahTxtField.text.toString()
-            val jurusan = jurusanTxtField.text.toString()
+            val jurusan = autoCompleteJurusan.text.toString()
             val nama = namaLengkapTextField.text.toString()
             val nik = nikTextField.text.toString().toLong()
             val nimNisn = nimNisnTxtField.text.toString().toLong()

@@ -4,10 +4,13 @@ import android.content.Context
 import android.content.res.Resources.NotFoundException
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.inovego.temanesia.R
 import com.inovego.temanesia.databinding.ItemsTextFieldBinding
 import com.inovego.temanesia.utils.CONFIRM_ACCOUNT
 import com.inovego.temanesia.utils.EMAIL_PASSWORD
@@ -49,6 +52,12 @@ class AuthTextInputLinearLayout : LinearLayout {
         view.forEach { it.isVisible = true }
     }
 
+    fun getJurusanDropdown(context: Context) {
+        val jurusanList = listOf("Informatika", "Mesin", "Listrik", "Sipil", "Grafika")
+        val dropDownAdapter = ArrayAdapter(context, R.layout.item_dropdown, jurusanList)
+        (binding.autoCompleteJurusan as? AutoCompleteTextView)?.setAdapter(dropDownAdapter)
+    }
+
     fun getView() = binding
 
     fun checkTextInputAndError(
@@ -84,7 +93,7 @@ class AuthTextInputLinearLayout : LinearLayout {
                         isCheckError
                     )
 
-                    val jurusan = jurusanTxtField.checkTextInput(
+                    val jurusan = autoCompleteJurusan.checkTextInput(
                         jurusanTextFieldContainer,
                         isCheckError
                     )
@@ -175,6 +184,24 @@ class AuthTextInputLinearLayout : LinearLayout {
             checkTextInputError(textInputLayout, isLoginSession!!)
         } else {
             textInputLayout.setEditTextAndError(this)
+            textInputLayout.disableError()
+            true
+        }
+    }
+
+    private fun AutoCompleteTextView.checkTextInput(
+        textInputLayout: AuthTextInput,
+        isCheckError: Boolean,
+        message: String? = "Lengkapi Input",
+        isLoginSession: Boolean? = false,
+    ): Boolean {
+        return if (isCheckError && this.text.toString().isEmpty()) {
+            textInputLayout.enableErrorAndSetMessage(message)
+            false
+        } else if (isCheckError) {
+            checkTextInputError(textInputLayout, isLoginSession!!)
+        } else {
+            textInputLayout.setAutoTextAndError(this)
             textInputLayout.disableError()
             true
         }

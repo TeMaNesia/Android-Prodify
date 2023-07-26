@@ -24,7 +24,7 @@ data class ProfileDummy(
 )
 
 @Parcelize
-data class ListItem(
+data class FeatureItem(
     val jenisKegiatan: String,
     val status: String,
     val nama: String,
@@ -34,8 +34,9 @@ data class ListItem(
     val penyelenggara: String,
     val penyelenggaraUID: String,
     val penyelenggaraEmail: String,
-    val url: String,
-    val urlPoster: String,
+    val urlFeature: String,
+    val urlPosterImg: String?,
+    val urlPenyelenggaraImg: String?,
     var createdAt: Date,
     var date: Date,
     val listDokumen: List<Dokumen>?,

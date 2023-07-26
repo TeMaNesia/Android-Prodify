@@ -131,8 +131,8 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_penyelanggara"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:src="@drawable/raw_profile"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -143,6 +143,7 @@
                     android:id="@+id/tv_penyelenggara_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium_gap"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/title_penyelenggara"
                     app:layout_constraintBottom_toTopOf="@id/tv_penyelenggara_email"
@@ -182,12 +183,12 @@
                 android:id="@+id/rv_dokumen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/big_gap"
+                android:layout_marginBottom="@dimen/medium_gap"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_list_dokumen" />
 
             <Button
-                android:id="@+id/auth_button"
+                android:id="@+id/btn_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_text_login"

@@ -25,8 +25,8 @@ fun createToast(context: Context, message: String) {
     ).show()
 }
 
-fun ShapeableImageView.loadImageFromUrl(urlPoster: String) =
+fun ShapeableImageView.loadImageFromUrl(urlPoster: String?) =
     Glide.with(this).load(urlPoster).into(this)
 
-fun ImageView.loadImageFromUrl(urlPoster: String) =
+fun ImageView.loadImageFromUrl(urlPoster: String?) =
     Glide.with(this).load(urlPoster).into(this)

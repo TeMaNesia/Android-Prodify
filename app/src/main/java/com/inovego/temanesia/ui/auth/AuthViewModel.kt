@@ -21,14 +21,14 @@ class AuthViewModel(
     private val _uid = MutableLiveData<String>()
     val uid: LiveData<String> = _uid
 
-    private val _isRegistered = MutableLiveData(false)
-    val isRegistered: LiveData<Boolean> = _isRegistered
+//    private val _isRegistered = MutableLiveData(false)
+//    val isRegistered: LiveData<Boolean> = _isRegistered
 
     private val _isSignedIn = MutableLiveData(false)
     val isSignedIn: LiveData<Boolean> = _isSignedIn
 
-    private val _isEmailVerified = MutableLiveData(false)
-    val isEmailVerified: LiveData<Boolean> = _isEmailVerified
+//    private val _isEmailVerified = MutableLiveData(false)
+//    val isEmailVerified: LiveData<Boolean> = _isEmailVerified
 
     private val _isUserDataSaved = MutableLiveData(false)
     val isUserDataSaved: LiveData<Boolean> = _isUserDataSaved
@@ -44,16 +44,18 @@ class AuthViewModel(
         _toastText.value = Event(text)
     }
 
-    fun signupFirebase(
-        email: String,
-        password: String,
-    ) {
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-            _isRegistered.value = it.isSuccessful
-            if (it.isSuccessful) _toastText.value = Event("Berhasil Membuat Akun")
-            else _toastText.value = Event("Gagal : ${it.exception?.message}")
-        }.addOnFailureListener { e -> Event("Gagal SignUp : $e") }
-    }
+//    fun signupFirebase(
+//        email: String,
+//        password: String,
+//    ) {
+//        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+//            if (it.isSuccessful) {
+//                _toastText.value = Event("Berhasil Membuat Akun")
+//                _isRegistered.value = true
+//            }
+//            else _toastText.value = Event("Gagal : ${it.exception?.message}")
+//        }.addOnFailureListener { e -> Event("Gagal SignUp : $e") }
+//    }
 
     fun signInFirebase(
         email: String,

@@ -3,7 +3,7 @@ package com.inovego.temanesia.data.model
 import java.util.Date
 
 object ProfileData {
-    val date = Date()
+    private val date = Date()
     val data = listOf(
         ProfileDummy(
             1,

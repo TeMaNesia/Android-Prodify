@@ -101,19 +101,21 @@
 
     <com.inovego.temanesia.ui.auth.view.AuthTextInput
         android:id="@+id/jurusan_textField_container"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_margin"
-        android:hint="@string/title_kampus_sekolah"
+        android:hint="@string/title_jurusan"
+        android:labelFor="@id/autoComplete_jurusan"
         android:visibility="gone"
         app:startIconContentDescription="@string/title_kampus_sekolah"
         app:startIconDrawable="@drawable/ic_sekolah">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/jurusan_txtField"
+        <AutoCompleteTextView
+            android:id="@+id/autoComplete_jurusan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="none" />
 
     </com.inovego.temanesia.ui.auth.view.AuthTextInput>
 

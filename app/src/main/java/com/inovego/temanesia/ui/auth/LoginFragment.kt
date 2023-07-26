@@ -60,7 +60,6 @@ class LoginFragment : Fragment() {
                     signInFirebase(email.toString(), password.toString())
                 }
             }
-
 //            btnTest.setOnClickListener {
 //                viewModel.sendEmailVerification()
 //            }

@@ -19,7 +19,7 @@
     <string name="text_welcome">Selamat Datang 👋</string>
     <string name="text_welcome_description">Silahkan masuk menggunakan akun anda untuk \nmenggunakan Aplikasi.</string>
     <string name="text_welcome_register">Buat Akun Baru 🔥</string>
-    <string name="text_welcome_register_description">Silahkan ini form dibawah ini dengan lengkap dan sesuaikan \ndengan data Anda.</string>
+    <string name="text_welcome_register_description">Silahkan ini form dibawah ini dengan lengkap dan sesuaikan dengan data Anda.</string>
 
 
     <string name="text_sudah_mendaftar">Sudah punya akun?</string>
@@ -67,4 +67,5 @@
     <string name="title_rekomendasi_beasiswa">Rekomendasi Beasiswa</string>
     <string name="iv_desc_goto_beasiswa">Goto Beasiswa</string>
     <string name="deskripsi_dokumen">Buku Pedoman Kompetisi Mahasiswa Bidang Informatika Politeknik Nasional</string>
+    <string name="title_jurusan">Jurusan</string>
 </resources>

@@ -1,21 +1,19 @@
 package com.inovego.temanesia.ui.home.lomba
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.inovego.temanesia.R
-import com.inovego.temanesia.databinding.ActivityBeasiswaBinding
+import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.databinding.ActivityLombaBinding
 import com.inovego.temanesia.helper.ViewModelFactory
 import com.inovego.temanesia.ui.adapter.HomeAdapter
 import com.inovego.temanesia.ui.detail.DetailFeatureActivity
 import com.inovego.temanesia.ui.home.HomeViewModel
-import com.inovego.temanesia.utils.FIREBASE_BEASISWA
 import com.inovego.temanesia.utils.FIREBASE_LOMBA
 
 class LombaActivity : AppCompatActivity() {
@@ -24,6 +22,7 @@ class LombaActivity : AppCompatActivity() {
     private val homeViewModel: HomeViewModel by viewModels {
         ViewModelFactory.getInstance(Firebase.auth, Firebase.firestore)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLombaBinding.inflate(layoutInflater)
@@ -32,7 +31,7 @@ class LombaActivity : AppCompatActivity() {
 
         adapter = HomeAdapter { item ->
             Intent(this, DetailFeatureActivity::class.java).also {
-                it.putExtra("FeatureItem", item)
+                it.putExtra(FeatureItem::class.java.simpleName, item)
                 startActivity(it)
             }
         }

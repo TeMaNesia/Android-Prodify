@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.widget.AutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -37,9 +38,24 @@ class AuthTextInput : TextInputLayout {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(p0: Editable?) {
-                isErrorEnabled = p0.toString().isEmpty()
-                if(isErrorEnabled) error = errorMessage
+                checkError(p0.toString(), errorMessage)
             }
         })
+    }
+
+    fun setAutoTextAndError(autoCompleteTextview: AutoCompleteTextView, errorMessage: String? = "Lengkapi Input") {
+        autoCompleteTextview.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(p0: Editable?) {
+                checkError(p0.toString(), errorMessage)
+            }
+        })
+    }
+
+    fun checkError(txt: String, errorMessage: String? = "Lengkapi Input") {
+        isErrorEnabled = txt.isEmpty()
+        if (isErrorEnabled) error = errorMessage
     }
 }
