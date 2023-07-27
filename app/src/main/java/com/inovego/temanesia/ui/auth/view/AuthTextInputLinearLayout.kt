@@ -53,7 +53,17 @@ class AuthTextInputLinearLayout : LinearLayout {
     }
 
     fun getJurusanDropdown(context: Context) {
-        val jurusanList = listOf("Informatika", "Mesin", "Listrik", "Sipil", "Grafika")
+        val jurusanList = listOf(
+            "Informatika dan Komputer",
+            "Sipil",
+            "Mesin",
+            "Administrasi Niaga",
+            "Akuntansi",
+            "Grafika dan Penerbitan",
+            "Elektro",
+            "Kesehatan",
+            "Sastra dan Bahasa"
+        ).sorted()
         val dropDownAdapter = ArrayAdapter(context, R.layout.item_dropdown, jurusanList)
         (binding.autoCompleteJurusan as? AutoCompleteTextView)?.setAdapter(dropDownAdapter)
     }

@@ -15,6 +15,7 @@ import com.inovego.temanesia.ui.adapter.HomeAdapter
 import com.inovego.temanesia.ui.detail.DetailFeatureActivity
 import com.inovego.temanesia.ui.home.HomeViewModel
 import com.inovego.temanesia.utils.FIREBASE_LOMBA
+import com.inovego.temanesia.utils.cat
 
 class LombaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLombaBinding

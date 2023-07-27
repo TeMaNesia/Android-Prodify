@@ -1,72 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@drawable/empty_divider"
-    android:orientation="vertical"
-    android:showDividers="middle"
-    tools:context=".ui.home.HomeFragment">
-
-    <include
-        android:id="@+id/action_bar_custom"
-        layout="@layout/action_bar_custom" />
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_margin"
-        android:layout_marginEnd="@dimen/activity_margin"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/iv_hero_home"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/big_gap"
-            android:contentDescription="@string/iv_hero"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_hero_home"
-            app:layout_constraintTop_toBottomOf="@id/action_bar_custom" />
+        android:divider="@drawable/empty_divider"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        tools:context=".ui.home.HomeFragment">
 
         <include
-            android:id="@+id/card_features"
-            layout="@layout/list_feature" />
+            android:id="@+id/action_bar_custom"
+            layout="@layout/action_bar_custom" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/big_gap"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-
-            <TextView
-                android:id="@+id/tv_title_beasiswa"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/title_rekomendasi_beasiswa"
-                android:textSize="@dimen/font_size_medium" />
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:id="@+id/iv_hero_home"
+                android:layout_width="330dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/big_gap"
+                android:contentDescription="@string/iv_hero"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_hero_home"
+                app:layout_constraintTop_toBottomOf="@id/action_bar_custom" />
+
+            <include
+                android:id="@+id/card_features"
+                layout="@layout/list_feature" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:contentDescription="@string/iv_desc_goto_beasiswa"
-                android:src="@drawable/ic_goto_features" />
+                android:layout_marginTop="@dimen/big_gap"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/tv_title_lomba"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/title_lomba_home"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/iv_desc_goto_beasiswa"
+                    android:src="@drawable/ic_goto_features" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_lomba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
+                tools:listitem="@layout/item_list_feature_linear" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/big_gap"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/tv_title_beasiswa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/title_rekomendasi_beasiswa"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/iv_desc_goto_beasiswa"
+                    android:src="@drawable/ic_goto_features" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_beasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
+                tools:listitem="@layout/item_list_feature_linear" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/big_gap"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/tv_title_lowongan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/title_lowongan_home"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/iv_desc_goto_beasiswa"
+                    android:src="@drawable/ic_goto_features" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_lowongan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
+                tools:listitem="@layout/item_list_feature_linear" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/big_gap"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/tv_title_sertifikasi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/title_sertifikasi"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/iv_desc_goto_beasiswa"
+                    android:src="@drawable/ic_goto_features" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_sertifikat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
+                tools:listitem="@layout/item_list_feature_linear" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_beasiswa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_gap"
-            app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
-            tools:listitem="@layout/item_list_feature_linear" />
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

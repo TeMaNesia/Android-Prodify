@@ -6,9 +6,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.databinding.ActivityDetailFeatureBinding
 import com.inovego.temanesia.ui.adapter.DetailAdapter
+import com.inovego.temanesia.utils.FIREBASE_LOWONGAN_STATUS
+import com.inovego.temanesia.utils.createToast
 import com.inovego.temanesia.utils.loadImageFromUrl
 
 class DetailFeatureActivity : AppCompatActivity() {
@@ -51,10 +56,29 @@ class DetailFeatureActivity : AppCompatActivity() {
                         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 }
                 btnDetail.text = "Daftar Sekarang"
-                btnDetail.setOnClickListener {
-                    val openUrl = Intent(Intent.ACTION_VIEW)
-                    openUrl.data = Uri.parse(featureItem.urlFeature)
-                    startActivity(openUrl)
+
+                if (featureItem.jenisKegiatan.lowercase() == "lowongan") {
+                    btnDetail.setOnClickListener {
+                        val uid = Firebase.auth.uid!!
+                        val users = HashMap<String, Any>()
+                        users["lowongan"] = featureItem.nama
+                        users["status"] = "Dalam Proses"
+                        Firebase.firestore.collection(FIREBASE_LOWONGAN_STATUS).document(uid)
+                            .set(users)
+                            .addOnSuccessListener {
+                                createToast(this@DetailFeatureActivity, "Berhasil Mendaftar")
+                                finish()
+                            }.addOnFailureListener { e ->
+                                createToast(this@DetailFeatureActivity, "Gagal : ${e.message}")
+                            }
+                    }
+
+                } else {
+                    btnDetail.setOnClickListener {
+                        val openUrl = Intent(Intent.ACTION_VIEW)
+                        openUrl.data = Uri.parse(featureItem.urlFeature)
+                        startActivity(openUrl)
+                    }
                 }
             }
         }

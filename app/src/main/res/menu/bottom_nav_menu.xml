@@ -7,7 +7,7 @@
     <item
         android:id="@+id/navigation_discover"
         android:icon="@drawable/selector_discover"
-        android:title="@string/title_discuss" />
+        android:title="@string/title_discover" />
     <item
         android:id="@+id/navigation_discuss"
         android:icon="@drawable/selector_discuss"

@@ -31,7 +31,11 @@
         android:id="@+id/navigation_discover"
         android:name="com.inovego.temanesia.ui.discover.DiscoverFragment"
         android:label="@string/title_discover"
-        tools:layout="@layout/fragment_discover" />
+        tools:layout="@layout/fragment_discover" >
+        <action
+            android:id="@+id/action_navigation_discover_to_navigation_detailFeatureActivity"
+            app:destination="@id/navigation_detailFeatureActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_discuss"

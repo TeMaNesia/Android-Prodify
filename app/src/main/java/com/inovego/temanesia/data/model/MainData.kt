@@ -34,6 +34,7 @@ data class FeatureItem(
     val penyelenggara: String,
     val penyelenggaraUID: String,
     val penyelenggaraEmail: String,
+    val jurusanFeature: List<String>?,
     val urlFeature: String,
     val urlPosterImg: String?,
     val urlPenyelenggaraImg: String?,

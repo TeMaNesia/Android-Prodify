@@ -60,9 +60,6 @@ class LoginFragment : Fragment() {
                     signInFirebase(email.toString(), password.toString())
                 }
             }
-//            btnTest.setOnClickListener {
-//                viewModel.sendEmailVerification()
-//            }
         }
     }
 
@@ -70,9 +67,7 @@ class LoginFragment : Fragment() {
         viewModel.signInFirebase(email, password)
         viewModel.isSignedIn.observe(viewLifecycleOwner) { isSignIn ->
             if (isSignIn == true) {
-                if (viewModel.checkEmail()) {
-                    findNavController().navigate(R.id.action_navigation_login_to_mainActivity)
-                }
+                findNavController().navigate(R.id.action_navigation_login_to_mainActivity)
             }
         }
 

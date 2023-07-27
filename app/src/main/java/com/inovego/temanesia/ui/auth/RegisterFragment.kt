@@ -43,12 +43,18 @@ class RegisterFragment : Fragment() {
         textInputLayout = binding.register.authTextInputLayout
         button = binding.register.authButton
         textInputLayout.getJurusanDropdown(requireContext())
+        button.text = "Continue"
+        binding.register.authStatusText.apply {
+            loginRegisterText.text = "Masuk Disini"
+            loginRegisterText.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_register_to_navigation_login)
+            }
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button.text = "Continue"
         viewModel.toastText.observe(viewLifecycleOwner) { event ->
             event.getContentIfNotHandled()?.let { text ->
                 createToast(requireContext(), text)

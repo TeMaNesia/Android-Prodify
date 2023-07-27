@@ -8,6 +8,7 @@ const val CONFIRM_ACCOUNT = "section 4"
 const val FIREBASE_BEASISWA = "beasiswa"
 const val FIREBASE_LOMBA = "lomba"
 const val FIREBASE_LOWONGAN = "lowongan"
+const val FIREBASE_LOWONGAN_STATUS = "lowongan_status"
 const val FIREBASE_SERTIFIKASI = "sertifikasi"
 
 const val FIREBASE_DOKUMEN = "file-penting"

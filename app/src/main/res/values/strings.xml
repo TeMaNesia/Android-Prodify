@@ -68,4 +68,9 @@
     <string name="iv_desc_goto_beasiswa">Goto Beasiswa</string>
     <string name="deskripsi_dokumen">Buku Pedoman Kompetisi Mahasiswa Bidang Informatika Politeknik Nasional</string>
     <string name="title_jurusan">Jurusan</string>
+    <string name="title_sertifikasi">Yuk Sertifikasi Disini</string>
+    <string name="title_lowongan_home">Lowongan Cocok Untukmu</string>
+    <string name="title_lomba_home">Lomba Untukmu</string>
+    <string name="title_last_minute_discover">Last Minute Registration</string>
+    <string name="title_fyp_discover">Khusus Hanya Untukmu</string>
 </resources>
