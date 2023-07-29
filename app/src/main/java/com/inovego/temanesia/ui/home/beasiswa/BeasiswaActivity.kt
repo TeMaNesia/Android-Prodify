@@ -46,6 +46,8 @@ class BeasiswaActivity : AppCompatActivity() {
             }
         }
 
+
+
         homeViewModel.getUserData(FIREBASE_USER_MOBILE).observe(this) { jurusan ->
             homeViewModel.getListItemByJurusan(FIREBASE_BEASISWA, jurusan)
 

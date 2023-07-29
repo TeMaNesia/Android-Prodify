@@ -4,16 +4,21 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.core.view.View
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.inovego.temanesia.R
 import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.databinding.ActivityDetailFeatureBinding
 import com.inovego.temanesia.ui.adapter.DetailAdapter
+import com.inovego.temanesia.utils.FIREBASE_BEASISWA
 import com.inovego.temanesia.utils.FIREBASE_LAMARAN
+import com.inovego.temanesia.utils.FIREBASE_LOWONGAN
+import com.inovego.temanesia.utils.FIREBASE_SERTIFIKASI
 import com.inovego.temanesia.utils.createToast
 import com.inovego.temanesia.utils.loadImageFromUrl
 import java.util.Date
@@ -85,6 +90,29 @@ class DetailFeatureActivity : AppCompatActivity() {
                         val openUrl = Intent(Intent.ACTION_VIEW)
                         openUrl.data = Uri.parse(featureItem.urlFeature)
                         startActivity(openUrl)
+                    }
+                }
+
+                when(featureItem.jenisKegiatan){
+                    "Lomba" ->{
+                        tvPillFeatures.setTextColor(ContextCompat.getColor(applicationContext, R.color.blue100))
+                        tvFeaturesTitle.setTextColor(ContextCompat.getColor(applicationContext, R.color.blue100))
+                        tvPillFeatures.setBackgroundResource(R.drawable.component_pill_blue_bg)
+                    }
+                    FIREBASE_SERTIFIKASI ->{
+                        tvPillFeatures.setBackgroundResource(R.drawable.component_pill_orange_bg)
+                        tvFeaturesTitle.setTextColor(ContextCompat.getColor(applicationContext, R.color.orange100))
+                        tvPillFeatures.setTextColor(ContextCompat.getColor(applicationContext, R.color.orange100))
+                    }
+                    FIREBASE_LOWONGAN ->{
+                        tvPillFeatures.setBackgroundResource(R.drawable.component_pill_red_bg)
+                        tvFeaturesTitle.setTextColor(ContextCompat.getColor(applicationContext, R.color.red100))
+                        tvPillFeatures.setTextColor(ContextCompat.getColor(applicationContext, R.color.red100))
+                    }
+                    FIREBASE_BEASISWA ->{
+                        tvPillFeatures.setBackgroundResource(R.drawable.component_pill_green_bg)
+                        tvFeaturesTitle.setTextColor(ContextCompat.getColor(applicationContext, R.color.green100))
+                        tvPillFeatures.setTextColor(ContextCompat.getColor(applicationContext, R.color.green100))
                     }
                 }
             }

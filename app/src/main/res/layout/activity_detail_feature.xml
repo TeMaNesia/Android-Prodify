@@ -35,6 +35,7 @@
                     android:id="@+id/tv_pill_features"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/medium_gap"
                     android:background="@drawable/component_pill_blue_bg"
                     android:fontFamily="@font/poppins_medium"
                     android:text="@string/text_features"
@@ -204,6 +205,7 @@
 
             <Button
                 android:id="@+id/btn_detail"
+                android:background="@drawable/bg_btn_blue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_text_login"

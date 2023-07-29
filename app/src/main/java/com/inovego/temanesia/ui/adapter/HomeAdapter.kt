@@ -49,13 +49,13 @@ class HomeAdapter(
 
                 when(FeatureItem.jenisKegiatan){
                     "Lomba" ->{
-                        binding.apply{
-                            layoutFeatures.setBackgroundResource(R.drawable.component_card_blue_border)
-                            tvPillFeatures.setTextColor(ContextCompat.getColor(context, R.color.blue100))
-                        }
+                        layoutFeatures.setBackgroundResource(R.drawable.component_card_blue_border)
+                        tvPillFeatures.setBackgroundResource(R.drawable.component_pill_blue_bg)
+                        tvPillFeatures.setTextColor(ContextCompat.getColor(context, R.color.blue100))
+
                     }
                     FIREBASE_SERTIFIKASI ->{
-                        binding.layoutFeatures.setBackgroundResource(R.drawable.component_card_orange_border)
+                        layoutFeatures.setBackgroundResource(R.drawable.component_card_orange_border)
                         tvPillFeatures.setBackgroundResource(R.drawable.component_pill_orange_bg)
                         tvPillFeatures.setTextColor(ContextCompat.getColor(context, R.color.orange100))
                     }
