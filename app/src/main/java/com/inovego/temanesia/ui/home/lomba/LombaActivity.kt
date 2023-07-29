@@ -3,6 +3,7 @@ package com.inovego.temanesia.ui.home.lomba
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,10 +16,8 @@ import com.inovego.temanesia.helper.ViewModelFactory
 import com.inovego.temanesia.ui.adapter.HomeAdapter
 import com.inovego.temanesia.ui.detail.DetailFeatureActivity
 import com.inovego.temanesia.ui.home.HomeViewModel
-import com.inovego.temanesia.utils.FIREBASE_BEASISWA
 import com.inovego.temanesia.utils.FIREBASE_LOMBA
 import com.inovego.temanesia.utils.FIREBASE_USER_MOBILE
-import com.inovego.temanesia.utils.cat
 
 class LombaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLombaBinding
@@ -49,18 +48,42 @@ class LombaActivity : AppCompatActivity() {
         }
 
         homeViewModel.getUserData(FIREBASE_USER_MOBILE).observe(this) { jurusan ->
-            homeViewModel.getListItemByJurusan(FIREBASE_LOMBA, jurusan)
+            setRecycleView(jurusan, "")
+            binding.search.setOnQueryTextListener(object :
+                androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    setRecycleView(jurusan, query.lowercase())
+                    hideKeyboard()
+                    return true
+                }
 
-        }
-        homeViewModel.lomba.observe(this) {
-            it?.let { data ->
-                adapter.submitList(data)
-            }
+                override fun onQueryTextChange(newText: String): Boolean {
+                    if (newText.isEmpty()) setRecycleView(jurusan, "")
+                    return true
+                }
+            })
         }
 
         binding.rvLomba.apply {
             adapter = this@LombaActivity.adapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        }
+    }
+
+    private fun hideKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
+        currentFocus?.let { imm?.hideSoftInputFromWindow(it.windowToken, 0) }
+    }
+
+    private fun setRecycleView(jurusan: String, query: String) {
+        homeViewModel.getListItemByJurusan(FIREBASE_LOMBA, jurusan)
+        homeViewModel.lomba.observe(this) {
+            it?.let { data ->
+                val filteredList = data.filter { list ->
+                    list.nama.lowercase().contains(query)
+                }
+                adapter.submitList(filteredList)
+            }
         }
     }
 }

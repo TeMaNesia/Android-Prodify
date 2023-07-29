@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
                     search.setOnQueryTextListener(object :
                         androidx.appcompat.widget.SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String): Boolean {
-                            setRecycleView(jurusan, query)
+                            setRecycleView(jurusan, query.lowercase())
                             hideKeyboard()
                             return true
                         }
