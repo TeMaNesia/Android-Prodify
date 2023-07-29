@@ -24,15 +24,16 @@ class HomeViewModel(
     private val firebaseFirestore: FirebaseFirestore,
 ) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
+    private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
+
+    private val _text2 = MutableLiveData<String>()
+    val text2: LiveData<String> = _text2
 
     private val featureItem = mutableListOf<FeatureItem>()
 
-    private val _featureItem = MutableLiveData<List<FeatureItem>?>()
-    val listData: LiveData<List<FeatureItem>?> = _featureItem
+//    private val _featureItem = MutableLiveData<List<FeatureItem>?>()
+//    val listData: LiveData<List<FeatureItem>?> = _featureItem
 
     private val userItem = MutableLiveData<String>()
 
@@ -57,6 +58,10 @@ class HomeViewModel(
                 val data = document.data
                 if (data != null) {
                     val jurusan = data["jurusan"]
+                    val sekolah = data["jenjang_pendidikan"]
+                    val nama = data["nama"]
+                    _text.value = nama.toString()
+                    _text2.value = sekolah.toString()
                     userItem.value = jurusan.toString()
                 }
             }
@@ -75,7 +80,7 @@ class HomeViewModel(
             .addOnFailureListener { e -> cat("Failure ${e.message}") }
     }
 
-    fun getListItemByJurusan(collectionName: String, jurusan: String, nama: String = "") {
+    fun getListItemByJurusan(collectionName: String, jurusan: String) {
         _shimmer.value = true
         firebaseFirestore.collection(collectionName)
             .whereArrayContains("jurusan", jurusan)
@@ -147,46 +152,6 @@ class HomeViewModel(
 
 
     }
-
-
-    fun getListData(documentCollectionName: String) {
-        firebaseFirestore.collection(documentCollectionName)
-            .get()
-            .addOnSuccessListener { collection ->
-                val totalData = collection.size()
-                var processedData = 0
-                collection.forEach { collectionDoc ->
-                    val listDokumen = mutableListOf<Dokumen>()
-                    collectionDoc.reference.collection(FIREBASE_DOKUMEN)
-                        .get()
-                        .addOnSuccessListener { dokumen ->
-                            listDokumen.addAll(
-                                dokumen.map { data ->
-                                    Dokumen(
-                                        namaFile = data["nama_file"].toString(),
-                                        urlFile = data["url"].toString()
-                                    )
-                                }
-                            )
-                            featureItem.add(
-                                setListItem(collectionDoc, listDokumen)
-                            )
-                        }.addOnFailureListener {
-                            featureItem.add(
-                                setListItem(collectionDoc, listDokumen)
-                            )
-                        }.addOnCompleteListener {
-                            processedData += 1
-                            if (processedData == totalData) {
-                                _featureItem.value = featureItem
-                            }
-                        }
-                }
-            }
-
-            .addOnFailureListener { e -> cat("failure : $e") }
-    }
-
     private fun setListItem(
         data: QueryDocumentSnapshot,
         listDokumen: List<Dokumen>,

@@ -40,8 +40,17 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            binding.actionBarCustom.tvUsername.text = it
+        homeViewModel.apply {
+            text.observe(viewLifecycleOwner) {
+                binding.actionBarCustom.tvUsername.text = it
+            }
+            text2.observe(viewLifecycleOwner) {
+                binding.actionBarCustom.tvJurusan.text = it
+            }
+
+            binding.actionBarCustom.ivAvatar.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_profile)
+            }
         }
 
         return binding.root

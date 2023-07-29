@@ -40,8 +40,17 @@ class DiscoverFragment : Fragment() {
     ): View {
         _binding = FragmentDiscoverBinding.inflate(inflater, container, false)
 
-        discoverViewModel.text.observe(viewLifecycleOwner) {
-            binding.actionBarCustom.tvUsername.text = it
+        discoverViewModel.apply {
+            text.observe(viewLifecycleOwner) {
+                binding.actionBarCustom.tvUsername.text = it
+            }
+            text2.observe(viewLifecycleOwner) {
+                binding.actionBarCustom.tvJurusan.text = it
+            }
+
+            binding.actionBarCustom.ivAvatar.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_discover_to_navigation_profile)
+            }
         }
 
         return binding.root

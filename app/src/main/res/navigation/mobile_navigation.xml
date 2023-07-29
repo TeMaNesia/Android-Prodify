@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_lombaActivity"
             app:destination="@id/navigation_lombaActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
 
     <fragment
@@ -35,6 +38,9 @@
         <action
             android:id="@+id/action_navigation_discover_to_navigation_detailFeatureActivity"
             app:destination="@id/navigation_detailFeatureActivity" />
+        <action
+            android:id="@+id/action_navigation_discover_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
 
     <fragment

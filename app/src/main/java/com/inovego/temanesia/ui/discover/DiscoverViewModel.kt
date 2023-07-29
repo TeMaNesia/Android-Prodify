@@ -24,10 +24,11 @@ class DiscoverViewModel(
     private val firebaseFirestore: FirebaseFirestore,
 ) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is discover Fragment"
-    }
+    private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
+
+    private val _text2 = MutableLiveData<String>()
+    val text2: LiveData<String> = _text2
 
     private val _lomba = MutableLiveData<List<FeatureItem>?>()
     val lomba: LiveData<List<FeatureItem>?> = _lomba
@@ -51,6 +52,10 @@ class DiscoverViewModel(
                 val data = document.data
                 if (data != null) {
                     val jurusan = data["jurusan"]
+                    val sekolah = data["jenjang_pendidikan"]
+                    val nama = data["nama"]
+                    _text.value = nama.toString()
+                    _text2.value = sekolah.toString()
                     userItem.value = jurusan.toString()
                 }
             }
