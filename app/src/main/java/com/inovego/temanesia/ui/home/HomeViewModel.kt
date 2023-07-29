@@ -1,5 +1,6 @@
 package com.inovego.temanesia.ui.home
 
+import android.content.res.Resources.NotFoundException
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,11 +9,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 import com.inovego.temanesia.data.model.Dokumen
 import com.inovego.temanesia.data.model.FeatureItem
+import com.inovego.temanesia.utils.FIREBASE_BEASISWA
 import com.inovego.temanesia.utils.FIREBASE_DOKUMEN
 import com.inovego.temanesia.utils.FIREBASE_LOMBA
 import com.inovego.temanesia.utils.FIREBASE_LOWONGAN
+import com.inovego.temanesia.utils.FIREBASE_SERTIFIKASI
 import com.inovego.temanesia.utils.cat
 
 class HomeViewModel(
@@ -38,8 +42,14 @@ class HomeViewModel(
     private val _lowongan = MutableLiveData<List<FeatureItem>?>()
     val lowongan: LiveData<List<FeatureItem>?> = _lowongan
 
-//    private val _lastMinute = MutableLiveData<List<FeatureItem>?>()
-//    val lastMinute: LiveData<List<FeatureItem>?> = _lastMinute
+    private val _sertifikasi = MutableLiveData<List<FeatureItem>?>()
+    val sertifikasi: LiveData<List<FeatureItem>?> = _sertifikasi
+
+    private val _beasiswa = MutableLiveData<List<FeatureItem>?>()
+    val beasiswa: LiveData<List<FeatureItem>?> = _beasiswa
+
+    private val _shimmer = MutableLiveData<Boolean>()
+    val shimmer: LiveData<Boolean> = _shimmer
 
     fun getUserData(userCollectionName: String): LiveData<String> {
         firebaseFirestore.collection(userCollectionName).document(firebaseAuth.uid!!)
@@ -54,58 +64,45 @@ class HomeViewModel(
         return userItem
     }
 
-    fun getListItemByTime(documentCollectionName: String, jurusan: String) {
-        firebaseFirestore.collection(documentCollectionName)
+    fun getListItemByTime(collectionName: String, jurusan: String) {
+        _shimmer.value = true
+        firebaseFirestore.collection(collectionName)
             .whereArrayContains("jurusan", jurusan)
             .whereGreaterThanOrEqualTo("date", Timestamp.now())
             .orderBy("date", Query.Direction.ASCENDING)
             .get()
-            .addOnSuccessListener { document ->
-                val totalData = document.size()
-                var processedData = 0
-                val list = arrayListOf<FeatureItem>()
-                for (item in document) {
-                    getDokumentList(item) { listDokumen ->
-                        val data = setListItem(item, listDokumen)
-                        list.add(data)
-                        processedData++
-                        if (processedData == totalData) {
-                            separateValue(documentCollectionName, list)
-                        }
-                    }
-                }
-            }.addOnFailureListener { e ->
-                cat("Failure ${e.message}")
-            }
+            .addOnSuccessListener { document -> getFeatureData(document, collectionName) }
+            .addOnFailureListener { e -> cat("Failure ${e.message}") }
     }
 
-    fun getListItemByJurusan(
-        documentCollectionName: String,
-        jurusan: String,
-    ) {
-        firebaseFirestore.collection(documentCollectionName)
+    fun getListItemByJurusan(collectionName: String, jurusan: String, nama: String = "") {
+        _shimmer.value = true
+        firebaseFirestore.collection(collectionName)
             .whereArrayContains("jurusan", jurusan)
             .get()
-            .addOnSuccessListener { document ->
-                val totalData = document.size()
-                var processedData = 0
-                val list = arrayListOf<FeatureItem>()
-                for (item in document) {
-                    getDokumentList(item) { listDokumen ->
-                        val data = setListItem(item, listDokumen)
-                        list.add(data)
-                        processedData++
-                        if (processedData == totalData) {
-                            separateValue(documentCollectionName, list)
-                        }
-                    }
-                }
-            }.addOnFailureListener {
-                cat("Failure getting the data")
-            }
+            .addOnSuccessListener { document -> getFeatureData(document, collectionName) }
+            .addOnFailureListener { cat("Failure getting the data") }
     }
 
-    private fun separateValue(collectionName: String, list: List<FeatureItem>) {
+    private fun getFeatureData(document: QuerySnapshot, collectionName: String) {
+        val totalData = document.size()
+        var processedData = 0
+        val list = arrayListOf<FeatureItem>()
+        if (document.size() <= 0) separateValue(collectionName)
+        for (item in document) {
+            getDokumentList(item) { listDokumen ->
+                val data = setListItem(item, listDokumen)
+                list.add(data)
+                processedData++
+                if (processedData == totalData) {
+                    separateValue(collectionName, list)
+                    _shimmer.value = false
+                }
+            }
+        }
+    }
+
+    private fun separateValue(collectionName: String, list: List<FeatureItem>? = emptyList()) {
         when (collectionName) {
             FIREBASE_LOMBA -> {
                 _lomba.value = list
@@ -113,6 +110,19 @@ class HomeViewModel(
 
             FIREBASE_LOWONGAN -> {
                 _lowongan.value = list
+            }
+
+            FIREBASE_SERTIFIKASI -> {
+                _sertifikasi.value = list
+            }
+
+            FIREBASE_BEASISWA -> {
+                _beasiswa.value = list
+            }
+
+            else -> {
+                cat("$collectionName => $list")
+                throw NotFoundException("Collection Not Found")
             }
         }
     }
@@ -131,6 +141,8 @@ class HomeViewModel(
                     )
                 }
                 featureItemList.invoke(listFileData)
+            }.addOnFailureListener {
+                cat(it.message)
             }
 
 
@@ -181,6 +193,7 @@ class HomeViewModel(
     ): FeatureItem {
         @Suppress("UNCHECKED_CAST")
         return FeatureItem(
+            idFeature = data.id,
             jenisKegiatan = data["jenis_kegiatan"] as String,
             status = data["status"] as String,
             nama = data["nama"] as String,

@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="@id/iv_avatar"
         app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
-        app:layout_constraintStart_toEndOf="@id/iv_avatar">
+        app:layout_constraintStart_toEndOf="@id/iv_avatar"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar">
 
         <TextView
             android:id="@+id/tv_username"
@@ -40,13 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/dark_gray"
             android:text="@string/title_kampus_sekolah"
+            android:textColor="@color/dark_gray"
             android:textSize="@dimen/font_size_normal" />
 
     </LinearLayout>
-
-
 
 
     <ImageView
@@ -76,5 +74,4 @@
         app:queryHint="@string/search"
         app:searchIcon="@drawable/ic_search"
         app:showDividers="end" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

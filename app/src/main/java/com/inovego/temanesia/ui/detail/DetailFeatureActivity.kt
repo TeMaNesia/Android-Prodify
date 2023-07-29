@@ -7,18 +7,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.core.view.View
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.databinding.ActivityDetailFeatureBinding
 import com.inovego.temanesia.ui.adapter.DetailAdapter
-import com.inovego.temanesia.utils.FIREBASE_LOWONGAN_STATUS
+import com.inovego.temanesia.utils.FIREBASE_LAMARAN
 import com.inovego.temanesia.utils.createToast
 import com.inovego.temanesia.utils.loadImageFromUrl
+import java.util.Date
 
 class DetailFeatureActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailFeatureBinding
     private lateinit var adapter: DetailAdapter
+    private val userId = Firebase.auth.uid.toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,8 @@ class DetailFeatureActivity : AppCompatActivity() {
             FeatureItem::class.java.simpleName,
             FeatureItem::class.java
         )
+
+
         binding.apply {
             if (featureItem != null) {
                 adapter = DetailAdapter {
@@ -42,6 +47,7 @@ class DetailFeatureActivity : AppCompatActivity() {
                 tvPillFeatures.text = featureItem.jenisKegiatan
                 tvPillLembaga.text = featureItem.penyelenggara
                 tvFeaturesTitle.text = featureItem.nama
+                tvFeaturesDescription.text = featureItem.deskripsi
                 tvFeaturesDescriptionSingkat.text = featureItem.ringkasan
                 tvAlamat.text = featureItem.lokasi
                 tvTanggal.text = featureItem.date.toString()
@@ -59,12 +65,14 @@ class DetailFeatureActivity : AppCompatActivity() {
 
                 if (featureItem.jenisKegiatan.lowercase() == "lowongan") {
                     btnDetail.setOnClickListener {
-                        val uid = Firebase.auth.uid!!
                         val users = HashMap<String, Any>()
-                        users["lowongan"] = featureItem.nama
+                        users["nama_lowongan"] = featureItem.nama
+                        users["id_lowongan"] = featureItem.idFeature
+                        users["id_users"] = userId
+                        users["created_at"] = Date()
                         users["status"] = "Dalam Proses"
-                        Firebase.firestore.collection(FIREBASE_LOWONGAN_STATUS).document(uid)
-                            .set(users)
+                        Firebase.firestore.collection(FIREBASE_LAMARAN)
+                            .add(users)
                             .addOnSuccessListener {
                                 createToast(this@DetailFeatureActivity, "Berhasil Mendaftar")
                                 finish()
@@ -72,7 +80,6 @@ class DetailFeatureActivity : AppCompatActivity() {
                                 createToast(this@DetailFeatureActivity, "Gagal : ${e.message}")
                             }
                     }
-
                 } else {
                     btnDetail.setOnClickListener {
                         val openUrl = Intent(Intent.ACTION_VIEW)

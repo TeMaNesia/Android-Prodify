@@ -2,18 +2,22 @@ package com.inovego.temanesia.ui.home.sertifikat
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.databinding.ActivitySertifikatBinding
 import com.inovego.temanesia.helper.ViewModelFactory
 import com.inovego.temanesia.ui.adapter.HomeAdapter
 import com.inovego.temanesia.ui.detail.DetailFeatureActivity
 import com.inovego.temanesia.ui.home.HomeViewModel
+import com.inovego.temanesia.utils.FIREBASE_LOWONGAN
 import com.inovego.temanesia.utils.FIREBASE_SERTIFIKASI
+import com.inovego.temanesia.utils.FIREBASE_USER_MOBILE
 
 class SertifikatActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySertifikatBinding
@@ -28,16 +32,29 @@ class SertifikatActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        adapter = HomeAdapter { item ->
+        binding.shimmerLayout.startShimmer()
+        homeViewModel.shimmer.observe(this) {
+            if (it == false) {
+                binding.shimmerLayout.stopShimmer()
+                binding.shimmerLayout.visibility = View.GONE
+
+            }
+        }
+        adapter = HomeAdapter(this) { item ->
             Intent(this, DetailFeatureActivity::class.java).also {
-                it.putExtra("FeatureItem", item)
+                it.putExtra(FeatureItem::class.java.simpleName, item)
                 startActivity(it)
             }
         }
 
-        homeViewModel.getListData(FIREBASE_SERTIFIKASI)
-        homeViewModel.listData.observe(this) {
-            it?.let { data -> adapter.submitList(data) }
+        homeViewModel.getUserData(FIREBASE_USER_MOBILE).observe(this) { jurusan ->
+            homeViewModel.getListItemByJurusan(FIREBASE_SERTIFIKASI, jurusan)
+
+        }
+        homeViewModel.sertifikasi.observe(this) {
+            it?.let { data ->
+                adapter.submitList(data)
+            }
         }
 
         binding.rvSertifikat.apply {

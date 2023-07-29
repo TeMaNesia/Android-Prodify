@@ -23,8 +23,17 @@ data class ProfileDummy(
     val date: Date,
 )
 
+data class Lamaran(
+    val id: String,
+    val id_users: String,
+    val nama_lamaran: String,
+    val status: String,
+    val createdAt: Date,
+)
+
 @Parcelize
 data class FeatureItem(
+    val idFeature:String,
     val jenisKegiatan: String,
     val status: String,
     val nama: String,

@@ -1,85 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".ui.discover.DiscoverFragment">
-
-    <include
-        android:id="@+id/action_bar_custom"
-        layout="@layout/action_bar_custom" />
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_margin"
-        android:layout_marginEnd="@dimen/activity_margin"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.discover.DiscoverFragment">
+
+        <include
+            android:id="@+id/action_bar_custom"
+            layout="@layout/action_bar_custom" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/big_gap"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_title_last_minute"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/title_last_minute_discover"
-                android:textSize="@dimen/font_size_medium" />
+                android:layout_marginTop="@dimen/big_gap"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
-            <ImageView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/tv_title_last_minute"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/title_last_minute_discover"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/iv_desc_goto_beasiswa"
+                    android:src="@drawable/ic_goto_features" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_last_minute"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:contentDescription="@string/iv_desc_goto_beasiswa"
-                android:src="@drawable/ic_goto_features" />
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
+                tools:listitem="@layout/item_list_feature_linear" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayoutA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:animationCache="true"
+                app:shimmer_repeat_mode="restart"
+                app:shimmer_shape="radial">
+
+                <!--For shimmer we are creating a same
+                    layout but setting its background
+                    as a gray colour and not providing
+                    any view inside it-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--below we are displaying multiple
+                        shimmer layouts using include
+                        to show them in list format-->
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/big_gap"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/tv_fyp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/title_fyp_discover"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/iv_desc_goto_beasiswa"
+                    android:src="@drawable/ic_goto_features" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_fyp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_gap"
+                app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
+                tools:listitem="@layout/item_list_feature_linear" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayoutB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:animationCache="true"
+                app:shimmer_repeat_mode="restart"
+                app:shimmer_shape="radial">
+
+                <!--For shimmer we are creating a same
+                    layout but setting its background
+                    as a gray colour and not providing
+                    any view inside it-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--below we are displaying multiple
+                        shimmer layouts using include
+                        to show them in list format-->
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                    <include layout="@layout/item_list_shimmer" />
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
         </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_last_minute"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_gap"
-            app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
-            tools:listitem="@layout/item_list_feature_linear" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/big_gap"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-
-            <TextView
-                android:id="@+id/tv_fyp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/title_fyp_discover"
-                android:textSize="@dimen/font_size_medium" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:contentDescription="@string/iv_desc_goto_beasiswa"
-                android:src="@drawable/ic_goto_features" />
-        </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_fyp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_gap"
-            app:layout_constraintTop_toBottomOf="@id/iv_hero_home"
-            tools:listitem="@layout/item_list_feature_linear" />
     </LinearLayout>
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

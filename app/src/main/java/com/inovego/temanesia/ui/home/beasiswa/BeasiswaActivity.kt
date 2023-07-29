@@ -2,6 +2,7 @@ package com.inovego.temanesia.ui.home.beasiswa
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.inovego.temanesia.ui.adapter.HomeAdapter
 import com.inovego.temanesia.ui.detail.DetailFeatureActivity
 import com.inovego.temanesia.ui.home.HomeViewModel
 import com.inovego.temanesia.utils.FIREBASE_BEASISWA
+import com.inovego.temanesia.utils.FIREBASE_USER_MOBILE
 import com.inovego.temanesia.utils.PARCELABLE_DATA
 
 class BeasiswaActivity : AppCompatActivity() {
@@ -29,21 +31,38 @@ class BeasiswaActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        adapter = HomeAdapter { item ->
+        binding.shimmerLayout.startShimmer()
+        homeViewModel.shimmer.observe(this) {
+            if (it == false) {
+                binding.shimmerLayout.stopShimmer()
+                binding.shimmerLayout.visibility = View.GONE
+
+            }
+        }
+        adapter = HomeAdapter(this) { item ->
             Intent(this, DetailFeatureActivity::class.java).also {
                 it.putExtra(PARCELABLE_DATA, item)
                 startActivity(it)
             }
         }
 
-        homeViewModel.getListData(FIREBASE_BEASISWA)
-        homeViewModel.listData.observe(this) {
-            it?.let { data -> adapter.submitList(data) }
+        homeViewModel.getUserData(FIREBASE_USER_MOBILE).observe(this) { jurusan ->
+            homeViewModel.getListItemByJurusan(FIREBASE_BEASISWA, jurusan)
+
         }
+        homeViewModel.beasiswa.observe(this) {
+            it?.let { data ->
+                adapter.submitList(data)
+            }
+        }
+
 
         binding.rvBeasiswa.apply {
             adapter = this@BeasiswaActivity.adapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
     }
+
+
 }
+

@@ -9,6 +9,7 @@
     app:cardPreventCornerOverlap="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_features"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/component_card_blue_border"

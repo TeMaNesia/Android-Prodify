@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TeMaNesia"
         tools:targetApi="31">
         <activity
+            android:name=".lamaran.LamaranStatusActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.sertifikat.SertifikatActivity"
             android:exported="false" />
         <activity

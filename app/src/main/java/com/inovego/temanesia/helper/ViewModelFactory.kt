@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.inovego.temanesia.ui.auth.AuthViewModel
+import com.inovego.temanesia.ui.discover.DiscoverViewModel
+import com.inovego.temanesia.ui.discuss.DiscussViewModel
 import com.inovego.temanesia.ui.home.HomeViewModel
 
 class ViewModelFactory private constructor(
@@ -20,6 +22,10 @@ class ViewModelFactory private constructor(
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(firebaseAuth, firebaseDB) as T
+            }
+
+            modelClass.isAssignableFrom(DiscoverViewModel::class.java) -> {
+                DiscoverViewModel(firebaseAuth, firebaseDB) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
