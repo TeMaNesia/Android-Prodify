@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        android:elevation="0dp"
         app:cardElevation="0dp">
 
         <LinearLayout
@@ -37,6 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="@string/title_lomba"
@@ -50,6 +52,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        android:elevation="0dp"
         app:cardElevation="0dp">
 
         <LinearLayout
@@ -68,6 +71,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="@string/title_sertifikat"
@@ -81,6 +85,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        android:elevation="0dp"
         app:cardElevation="0dp">
 
         <LinearLayout
@@ -99,6 +104,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="@string/title_beasiswa"
@@ -112,6 +118,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        android:elevation="0dp"
         app:cardElevation="0dp">
 
         <LinearLayout
@@ -130,6 +137,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="@string/title_lowongan"

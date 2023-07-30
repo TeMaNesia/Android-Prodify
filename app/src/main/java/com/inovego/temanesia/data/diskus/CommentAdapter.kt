@@ -29,7 +29,7 @@ class CommentAdapter(uid: String): RecyclerView.Adapter<CommentAdapter.ViewHolde
         fun bind(data: Comment) {
             binding.namaLengkap.text = data.author_name
             binding.tvComment.text = data.content
-            binding.textUpvoteCount.text = data.up_vote.toString()
+//            binding.textUpvoteCount.text = data.up_vote.toString()
 
             Glide.with(itemView.context)
                 .load(data.author_img_url)

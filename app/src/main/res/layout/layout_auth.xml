@@ -1,50 +1,82 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_margin="@dimen/activity_margin"
-    android:gravity="center"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/auth_welcome_text"
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="-70dp"
+        android:src="@drawable/logo_img"
+        android:alpha="0.3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="-110dp"
+        android:src="@drawable/logo_img"
+        android:alpha="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/text_welcome_register"
-        android:textSize="@dimen/font_size_big" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_margin"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/auth_welcome_description_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/text_welcome_register_description"
-        android:textSize="@dimen/font_size_normal" />
+        <TextView
+            android:id="@+id/auth_welcome_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/text_welcome_register"
+            android:textSize="@dimen/font_size_big" />
+
+        <TextView
+            android:id="@+id/auth_welcome_description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/text_welcome_register_description"
+            android:textSize="@dimen/font_size_normal" />
 
 
-    <com.inovego.temanesia.ui.auth.view.AuthTextInputLinearLayout
-        android:id="@+id/auth_textInput_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        <com.inovego.temanesia.ui.auth.view.AuthTextInputLinearLayout
+            android:id="@+id/auth_textInput_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
-    <Button
-        android:id="@+id/auth_button"
-        android:background="@drawable/bg_btn_blue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_text_login"
-        android:textAllCaps="false" />
+        <Button
+            android:id="@+id/auth_button"
+            android:background="@drawable/bg_btn_blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/btn_text_login"
+            android:textAllCaps="false" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_test"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="test"-->
-<!--        android:textAllCaps="false" />-->
+        <!--    <Button-->
+        <!--        android:id="@+id/btn_test"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:text="test"-->
+        <!--        android:textAllCaps="false" />-->
 
-    <include
-        android:id="@+id/auth_status_text"
-        layout="@layout/item_auth_status_text" />
-</LinearLayout>
+        <include
+            android:id="@+id/auth_status_text"
+            layout="@layout/item_auth_status_text" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

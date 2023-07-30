@@ -26,13 +26,14 @@
 
             <ImageView
                 android:id="@+id/iv_hero_home"
-                android:layout_width="330dp"
-                android:layout_height="110dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/big_gap"
                 android:contentDescription="@string/iv_hero"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img_hero_home"
+                android:src="@drawable/hero"
                 app:layout_constraintTop_toBottomOf="@id/action_bar_custom" />
 
             <include

@@ -14,29 +14,27 @@
         android:background="@drawable/component_card_blue_border">
 
         <TextView
-            android:id="@+id/tv_status_pill"
-            android:background="@drawable/component_pill_blue_bg"
+            android:id="@+id/tv_title_sertifikat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/poppins_semibold"
             android:text="@string/title_nama_lengkap"
-            android:textSize="@dimen/font_size_normal"
+            android:textSize="@dimen/font_size_medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_title_lamaran"
+            android:id="@+id/tv_program"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/title_nama_lengkap"
-            android:textSize="@dimen/font_size_medium"
-            app:layout_constraintStart_toStartOf="@id/tv_status_pill"
-            app:layout_constraintTop_toBottomOf="@id/tv_status_pill" />
+            android:text="@string/title_tanggal"
+            android:textSize="@dimen/font_size_small"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_sertifikat"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_sertifikat" />
 
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -44,8 +42,25 @@
             android:text="@string/title_tanggal"
             android:textColor="@color/dark_gray"
             android:textSize="@dimen/font_size_small"
-            app:layout_constraintStart_toStartOf="@+id/tv_title_lamaran"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_lamaran" />
+            app:layout_constraintStart_toStartOf="@+id/tv_program"
+            app:layout_constraintTop_toBottomOf="@+id/tv_program" />
+
+        <TextView
+            android:id="@+id/btn_unduh"
+            android:background="@drawable/bg_btn_blue_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="6dp"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:text="Unduh Sertifikat"
+            android:textAllCaps="false"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_id"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

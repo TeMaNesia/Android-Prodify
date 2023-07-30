@@ -28,6 +28,7 @@
         android:id="@+id/rv_sertifikat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         tools:listitem="@layout/item_list_feature_linear"
         />
 
@@ -38,6 +39,7 @@
         android:animateLayoutChanges="true"
         android:animationCache="true"
         app:shimmer_repeat_mode="restart"
+        android:padding="16dp"
         app:shimmer_shape="radial">
 
         <!--For shimmer we are creating a same

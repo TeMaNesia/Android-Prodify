@@ -15,43 +15,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/component_search_bg"
-            android:layoutDirection="rtl"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:textCursorDrawable="@null"
-            app:iconifiedByDefault="false"
-            app:layout_constraintEnd_toEndOf="@id/iv_bell"
-            app:layout_constraintStart_toStartOf="@id/iv_avatar"
-            app:layout_constraintTop_toBottomOf="@id/iv_avatar"
-            app:queryBackground="@null"
-            app:queryHint="@string/search"
-            app:searchIcon="@drawable/ic_search"
-            app:showDividers="end" />
+<!--        <androidx.appcompat.widget.SearchView-->
+<!--            android:id="@+id/search"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/component_search_bg"-->
+<!--            android:layoutDirection="rtl"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:textCursorDrawable="@null"-->
+<!--            app:iconifiedByDefault="false"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/iv_bell"-->
+<!--            app:layout_constraintStart_toStartOf="@id/iv_avatar"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/iv_avatar"-->
+<!--            app:queryBackground="@null"-->
+<!--            app:queryHint="@string/search"-->
+<!--            app:searchIcon="@drawable/ic_search"-->
+<!--            app:showDividers="end" />-->
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_trending_diskus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            tools:listitem="@layout/item_list_discuss_linear"
-            tools:itemCount="1"/>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_trending_diskus"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            tools:listitem="@layout/item_list_discuss_linear"-->
+<!--            tools:itemCount="1"/>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="Diskus Terbaru"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_big"
-            android:fontFamily="@font/poppins_bold"/>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:text="Diskus Terbaru"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/font_size_big"-->
+<!--            android:fontFamily="@font/poppins_bold"/>-->
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="Lamaran Saya"
+            android:text="Repositori Sertifikat Saya"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_big"
             android:fontFamily="@font/poppins_bold"/>
@@ -33,7 +33,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_lamaran"
+        android:id="@+id/rv_sertifikat"
         android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"

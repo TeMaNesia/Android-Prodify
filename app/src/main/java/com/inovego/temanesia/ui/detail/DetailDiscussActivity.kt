@@ -41,6 +41,8 @@ class DetailDiscussActivity : AppCompatActivity() {
     private lateinit var uName: String
     private lateinit var uImgUrl: String
 
+    private var upVote = 0
+
     private val db = Firebase.firestore
     private val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
@@ -66,8 +68,7 @@ class DetailDiscussActivity : AppCompatActivity() {
         db.collection("users_mobile").document(uid).get()
             .addOnSuccessListener {
                 uName = it.getString("nama")!!
-//                uImgUrl = it.getString("img_url")!!
-                uImgUrl = ""
+                uImgUrl = it.getString("author_img_url")?: ""
             }
 
         binding.btnSend.setOnClickListener {
@@ -75,6 +76,22 @@ class DetailDiscussActivity : AppCompatActivity() {
             if (comment.isNotEmpty()) {
                 sendComment(comment)
             }
+        }
+
+        binding.btnUpvote.setOnClickListener {
+            binding.btnUpvote.setImageResource(R.drawable.ic_up_vote_active)
+            binding.textUpvoteCount.text = (upVote + 1).toString()
+            binding.textUpvoteCount.setTextColor(ContextCompat.getColor(this, R.color.blue100))
+
+            binding.btnDownvote.setImageResource(R.drawable.ic_down_vote)
+        }
+
+        binding.btnDownvote.setOnClickListener {
+            binding.btnDownvote.setImageResource(R.drawable.ic_down_vote_active)
+
+            binding.btnUpvote.setImageResource(R.drawable.ic_up_vote)
+            binding.textUpvoteCount.text = (upVote).toString()
+            binding.textUpvoteCount.setTextColor(ContextCompat.getColor(this, R.color.dark_gray))
         }
     }
 
@@ -91,6 +108,8 @@ class DetailDiscussActivity : AppCompatActivity() {
                     binding.namaLengkap.text = data.author_name
                     binding.textUpvoteCount.text = data.up_vote.toString()
                     binding.textCommentCount.text = data.total_comment.toString()
+
+                    upVote = data.up_vote
 
                     Glide.with(this)
                         .load(data.author_img_url)

@@ -30,6 +30,9 @@ class HomeViewModel(
     private val _text2 = MutableLiveData<String>()
     val text2: LiveData<String> = _text2
 
+    private val _imgProfile = MutableLiveData<String>()
+    val imgProfile: LiveData<String> = _imgProfile
+
     private val featureItem = mutableListOf<FeatureItem>()
 
 //    private val _featureItem = MutableLiveData<List<FeatureItem>?>()
@@ -60,8 +63,10 @@ class HomeViewModel(
                     val jurusan = data["jurusan"]
                     val sekolah = data["jenjang_pendidikan"]
                     val nama = data["nama"]
+                    val imProfile = data["author_img_url"] ?: ""
                     _text.value = nama.toString()
                     _text2.value = sekolah.toString()
+                    _imgProfile.value = imProfile.toString()
                     userItem.value = jurusan.toString()
                 }
             }

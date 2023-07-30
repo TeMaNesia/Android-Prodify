@@ -17,12 +17,16 @@ import com.inovego.temanesia.utils.FIREBASE_LOWONGAN
 import com.inovego.temanesia.utils.FIREBASE_SERTIFIKASI
 import com.inovego.temanesia.utils.cat
 import com.inovego.temanesia.utils.loadImageFromUrl
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class HomeAdapter(
     private val context: Context,
     private val onClick: (FeatureItem) -> Unit) :
     ListAdapter<FeatureItem, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
+    val formatter = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale("in", "ID"))
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemListFeatureLinearBinding.inflate(inflater, parent, false)
@@ -38,6 +42,7 @@ class HomeAdapter(
     inner class MyViewHolder(val binding: ItemListFeatureLinearBinding) : RecyclerView.ViewHolder(
         binding.root
     ) {
+
         fun bind(FeatureItem: FeatureItem) {
             binding.apply {
                 ivFeatures.loadImageFromUrl(FeatureItem.urlPosterImg)
@@ -45,7 +50,7 @@ class HomeAdapter(
                 tvPillLembaga.text = FeatureItem.penyelenggara
                 tvFeaturesTitle.text = FeatureItem.nama
                 tvFeaturesDescriptionSingkat.text = FeatureItem.ringkasan
-                tvDate.text = FeatureItem.date.toString()
+                tvDate.text = formatter.format(FeatureItem.date).toString()
 
                 when(FeatureItem.jenisKegiatan){
                     "Lomba" ->{
