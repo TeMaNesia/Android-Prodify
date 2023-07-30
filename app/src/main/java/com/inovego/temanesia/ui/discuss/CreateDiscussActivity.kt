@@ -63,7 +63,7 @@ class CreateDiscussActivity : AppCompatActivity() {
             } else {
                 db.collection("users_mobile").document(uid).get()
                     .addOnSuccessListener {
-                        saveDiskus(title, content, it.getString("nama")!!, "")
+                        saveDiskus(title, content, it.getString("nama")!!, it.getString("author_img_url")?: "")
                     }
             }
         }

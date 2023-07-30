@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.inovego.temanesia.R
 import com.inovego.temanesia.databinding.ItemListDiscussLinearBinding
 import com.inovego.temanesia.ui.detail.DetailDiscussActivity
@@ -19,8 +22,9 @@ import java.util.Calendar
 import kotlin.math.floor
 import kotlin.math.round
 
-class DiskusAdapter(uid: String): RecyclerView.Adapter<DiskusAdapter.ViewHolder>() {
+class DiskusAdapter(private val uid: String): RecyclerView.Adapter<DiskusAdapter.ViewHolder>() {
 
+    private val db = Firebase.firestore
     private var listData = ArrayList<Diskus>()
 
     fun setData(newListData: MutableList<Diskus>?) {
@@ -30,7 +34,7 @@ class DiskusAdapter(uid: String): RecyclerView.Adapter<DiskusAdapter.ViewHolder>
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val binding = ItemListDiscussLinearBinding.bind(itemView)
 
         fun bind(data: Diskus) {
@@ -69,6 +73,24 @@ class DiskusAdapter(uid: String): RecyclerView.Adapter<DiskusAdapter.ViewHolder>
                 val textView: TextView = LayoutInflater.from(itemView.context).inflate(R.layout.item_diskus_tag, binding.flexboxTag, false) as TextView
                 textView.text = "#$tag"
                 binding.flexboxTag.addView(textView)
+            }
+
+            binding.btnUpvote.setOnClickListener {
+                binding.btnUpvote.setImageResource(R.drawable.ic_up_vote_active)
+                binding.textUpvoteCount.text = (data.up_vote + 1).toString()
+                binding.textUpvoteCount.setTextColor(ContextCompat.getColor(itemView.context, R.color.blue100))
+
+                binding.btnDownvote.setImageResource(R.drawable.ic_down_vote)
+
+                binding.btnUpvote.isClickable = false
+            }
+
+            binding.btnDownvote.setOnClickListener {
+                binding.btnDownvote.setImageResource(R.drawable.ic_down_vote_active)
+
+                binding.btnUpvote.setImageResource(R.drawable.ic_up_vote)
+                binding.textUpvoteCount.text = (data.up_vote).toString()
+                binding.textUpvoteCount.setTextColor(ContextCompat.getColor(itemView.context, R.color.dark_gray))
             }
         }
     }

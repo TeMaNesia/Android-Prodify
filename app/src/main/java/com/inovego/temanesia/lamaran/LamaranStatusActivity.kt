@@ -40,5 +40,9 @@ class LamaranStatusActivity : AppCompatActivity() {
             .addOnFailureListener {
                 createToast(this, it.message.toString())
             }
+
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 }

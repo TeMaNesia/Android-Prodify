@@ -73,4 +73,21 @@
     <string name="title_lomba_home">Lomba Untukmu</string>
     <string name="title_last_minute_discover">Last Minute Registration</string>
     <string name="title_fyp_discover">Khusus Hanya Untukmu</string>
+    <string name="text_loading_placeholder">...</string>
+
+    <string-array name="indonesian_months">
+        <item></item>
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </string-array>
 </resources>

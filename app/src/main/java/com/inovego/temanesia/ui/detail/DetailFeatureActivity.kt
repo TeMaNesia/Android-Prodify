@@ -21,12 +21,16 @@ import com.inovego.temanesia.utils.FIREBASE_LOWONGAN
 import com.inovego.temanesia.utils.FIREBASE_SERTIFIKASI
 import com.inovego.temanesia.utils.createToast
 import com.inovego.temanesia.utils.loadImageFromUrl
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class DetailFeatureActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailFeatureBinding
     private lateinit var adapter: DetailAdapter
     private val userId = Firebase.auth.uid.toString()
+
+    val formatter = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale("in", "ID"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +59,7 @@ class DetailFeatureActivity : AppCompatActivity() {
                 tvFeaturesDescription.text = featureItem.deskripsi
                 tvFeaturesDescriptionSingkat.text = featureItem.ringkasan
                 tvAlamat.text = featureItem.lokasi
-                tvTanggal.text = featureItem.date.toString()
+                tvTanggal.text = formatter.format(featureItem.date).toString()
 
                 ivPenyelanggara.loadImageFromUrl(featureItem.urlPenyelenggaraImg)
                 tvPenyelenggaraTitle.text = featureItem.penyelenggara

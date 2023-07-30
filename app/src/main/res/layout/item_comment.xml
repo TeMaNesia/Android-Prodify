@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="12dp"
         android:background="@drawable/component_card_dark_grey_border">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,9 +23,10 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/img_avatar"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:src="@drawable/raw_profile"
+                android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
@@ -58,7 +58,7 @@
                 android:id="@+id/tv_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/black"
                 android:text="@string/lorem_ipsum_32_words"
@@ -67,57 +67,57 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="14dp"
-                android:gravity="end"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_comment">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginTop="14dp"-->
+<!--                android:gravity="end"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_comment">-->
 
-                <ImageView
-                    android:id="@+id/btn_upvote"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="14dp"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/upvote_desc"
-                    android:src="@drawable/ic_up_vote" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/btn_upvote"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="14dp"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:contentDescription="@string/upvote_desc"-->
+<!--                    android:src="@drawable/ic_up_vote" />-->
 
-                <TextView
-                    android:id="@+id/text_upvote_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/text_count_upvote"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="@dimen/font_size_medium" />
+<!--                <TextView-->
+<!--                    android:id="@+id/text_upvote_count"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:fontFamily="@font/poppins_semibold"-->
+<!--                    android:text="@string/text_count_upvote"-->
+<!--                    android:textColor="@color/dark_gray"-->
+<!--                    android:textSize="@dimen/font_size_medium" />-->
 
-                <ImageView
-                    android:id="@+id/btn_downvote"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="14dp"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/downVote_desc"
-                    android:src="@drawable/ic_down_vote" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/btn_downvote"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="14dp"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:contentDescription="@string/downVote_desc"-->
+<!--                    android:src="@drawable/ic_down_vote" />-->
 
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_comment_reply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_comment_reply"/>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_comment_reply"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            tools:itemCount="3"-->
+<!--            tools:listitem="@layout/item_comment_reply"/>-->
 
     </LinearLayout>
 
