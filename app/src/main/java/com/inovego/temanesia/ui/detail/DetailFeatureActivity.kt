@@ -6,11 +6,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.core.view.View
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.iamageo.library.BeautifulDialog
+import com.iamageo.library.description
+import com.iamageo.library.hideNegativeButton
+import com.iamageo.library.onPositive
+import com.iamageo.library.position
+import com.iamageo.library.title
+import com.iamageo.library.type
 import com.inovego.temanesia.R
 import com.inovego.temanesia.data.model.FeatureItem
 import com.inovego.temanesia.databinding.ActivityDetailFeatureBinding
@@ -83,8 +91,16 @@ class DetailFeatureActivity : AppCompatActivity() {
                         Firebase.firestore.collection(FIREBASE_LAMARAN)
                             .add(users)
                             .addOnSuccessListener {
-                                createToast(this@DetailFeatureActivity, "Berhasil Mendaftar")
-                                finish()
+//                                createToast(this@DetailFeatureActivity, "Berhasil Mendaftar")
+                                BeautifulDialog.build(this@DetailFeatureActivity)
+                                    .title("Berhasil", titleColor = ContextCompat.getColor(this@DetailFeatureActivity, R.color.black), fontStyle = ResourcesCompat.getFont(this@DetailFeatureActivity, R.font.poppins_bold))
+                                    .description("Kamu berhasil melamar lowongan ini !",  color = ContextCompat.getColor(this@DetailFeatureActivity, R.color.black), fontStyle = ResourcesCompat.getFont(this@DetailFeatureActivity, R.font.poppins_medium))
+                                    .type(type= BeautifulDialog.TYPE.SUCCESS)
+                                    .position(BeautifulDialog.POSITIONS.CENTER)
+                                    .hideNegativeButton(true)
+                                    .onPositive(text = "Tutup", buttonBackgroundColor = R.drawable.bg_btn_blue, textColor = ContextCompat.getColor(this@DetailFeatureActivity, R.color.white), fontStyle = ResourcesCompat.getFont(this@DetailFeatureActivity, R.font.poppins_bold), shouldIDismissOnClick = true) {
+                                        finish()
+                                    }
                             }.addOnFailureListener { e ->
                                 createToast(this@DetailFeatureActivity, "Gagal : ${e.message}")
                             }
